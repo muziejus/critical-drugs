@@ -1,5 +1,10 @@
 'use strict';
 
 module.exports = {
-  singleQuote: true,
+  useTabs: false,
+  semi: true,
+  trailingComma: "es5",
+  bracketSpacing: true,
+  arrowParens: "avoid",
+  singleQuote: false,
 };
