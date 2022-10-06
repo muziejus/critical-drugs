@@ -1,23 +1,62 @@
 export default function () {
-  // These comments are here to help you get started. Feel free to delete them.
-  /*
-    Config (with defaults).
-
-    Note: these only affect routes defined *after* them!
-  */
   // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
   this.namespace = "/api"; // make this `/api`, for example, if your API is namespaced
-  // this.timing = 400;      // delay for each request, automatically set to 0 during testing
-  /*
-    Shorthand cheatsheet:
 
-    this.get('/posts');
-    this.post('/posts');
-    this.get('/posts/:id');
-    this.put('/posts/:id'); // or this.patch
-    this.del('/posts/:id');
-
-    https://www.ember-cli-mirage.com/docs/route-handlers/shorthands
-  */
+  // Omeka API requests.
+  // https://omeka.readthedocs.io/en/latest/Reference/api/index.html#api-requests
+  this.get("/collections");
+  // params:
+  // public: boolean;
+  // featured: boolean;
+  // added_since: string; // (ISO 8601)
+  // modified_since: string; // (ISO 8601)
+  // owner: integer;
+  this.get("/element_sets");
+  // params:
+  // name: string;
+  // record_type: string;
+  this.get("/elements");
+  // params:
+  // element_set: integer;
+  // name: string;
+  // item_type: string;
+  this.get("/files");
+  // params:
+  // item: integer;
+  // order: integer;
+  // size_greater_than: integer;
+  // has_derivative_image: boolean;
+  // mime_type: string;
+  // added_since: string; // (ISO 8601)
+  // modified_since: string; // (ISO 8601)
+  this.get("/item_types");
+  // params:
+  // name: string
   this.get("/items");
+  // params:
+  // collection: integer;
+  // item_type: integer;
+  // public: boolean;
+  // featured: boolean;
+  // added_since: string; // (ISO 8601)
+  // modified_since: string; // (ISO 8601)
+  // owner: integer;
+  // tags: string;
+  // excludeTags: string; // [sic]
+  // hasImage: boolean; // [sic]
+  // range: string;
+  // search: string;
+  this.get("/resources");
+  this.get("/site");
+  this.get("/tags");
+  /*
+  this.get("/collections/:id");
+  this.get("/element_sets/:id");
+  this.get("/elements/:id");
+  this.get("/files/:id");
+  this.get("/item_types/:id");
+  this.get("/items/:id");
+  this.get("/tags/:id");
+  this.get("/users/:id");
+  */
 }
