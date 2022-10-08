@@ -1,3 +1,14 @@
 import { RestSerializer } from "miragejs";
+// import { underscore } from "@ember/string";
 
-export default RestSerializer.extend({});
+export default class ApplicationSerializer extends RestSerializer {
+  resourceUrl(path) {
+    path = path.replace(/^\//, "");
+    return `https://emb-line-omeka-site.com/api/${path}`;
+  }
+  root = false;
+  embed = true;
+  // keyForAttribute(attr) {
+  //   return underscore(attr);
+  // }
+}
