@@ -1,1 +1,22 @@
+<h2>Items</h2>
+<ul>
+  {{#each @model as |item|}}
+    <li>
+      <dl>
+        <dt>Id</dt>
+        <dd>{{item.id}}</dd>
+        <dt>Featured</dt>
+        <dd>{{item.featured}}</dd>
+        <dt>Public</dt>
+        <dd>{{item.public}}</dd>
+        <dt>Added</dt>
+        <dd>{{item.added}}</dd>
+        <dt>Modified</dt>
+        <dd>{{item.modified}}</dd>
+      </dl>
+    </li>
+  {{/each}}
+</ul>
+
+
 {{outlet}}
