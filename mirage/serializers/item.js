@@ -1,7 +1,14 @@
 import ApplicationSerializer from "./application";
 
 export default class ItemSerializer extends ApplicationSerializer {
-  include = ["collection", "tags", "files", "owner"];
+  include = [
+    "itemType",
+    "elementTexts",
+    "collection",
+    "tags",
+    "files",
+    "owner",
+  ];
 
   buildPayload(primaryResource, ...args) {
     const payload = super.buildPayload(primaryResource, ...args);

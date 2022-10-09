@@ -1,4 +1,5 @@
 export default function (server) {
+  server.loadFixtures();
   server.createList("collection", 2);
   const collections = server.schema.collections.all();
   server.createList("item", 10, {

@@ -1,5 +1,5 @@
 import { RestSerializer } from "miragejs";
-// import { underscore } from "@ember/string";
+import { underscore } from "@ember/string";
 
 export default class ApplicationSerializer extends RestSerializer {
   resourceUrl(path) {
@@ -8,7 +8,7 @@ export default class ApplicationSerializer extends RestSerializer {
   }
   root = false;
   embed = true;
-  // keyForAttribute(attr) {
-  //   return underscore(attr);
-  // }
+  keyForEmbeddedRelationship(modelName) {
+    return underscore(modelName);
+  }
 }

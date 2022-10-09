@@ -10,4 +10,5 @@ Router.map(function () {
   this.route("items");
   this.route("site");
   this.route("collections");
+  this.route("elements");
 });
