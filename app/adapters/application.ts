@@ -1,6 +1,6 @@
 import RESTAdapter from "@ember-data/adapter/rest";
-
 import type Store from "@ember-data/store";
+import { underscore } from "@ember/string";
 
 declare module "ember-data/types/registries/adapter" {
   export default interface AdapterRegistry {
@@ -11,6 +11,13 @@ declare module "ember-data/types/registries/adapter" {
 export default class ApplicationAdapter extends RESTAdapter {
   host = "https://emb-line-omeka-site.com";
   namespace = "api";
+
+  pathForType(modelName) {
+    const inflect = {
+      "element-set": "element_sets",
+    };
+    return inflect[modelName] ?? super.pathForType(modelName);
+  }
 
   async findAll(
     store: Store,
