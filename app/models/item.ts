@@ -2,7 +2,7 @@ import Model, {
   attr,
   belongsTo,
   hasMany,
-  AsyncHasMany,
+  SyncHasMany,
 } from "@ember-data/model";
 import Tag from "emb-line/models/tag";
 import ElementText from "emb-line/models/element-text";
@@ -16,8 +16,10 @@ export default class ItemModel extends Model {
   @attr declare added: string;
   @attr declare modified: string;
 
-  @hasMany("tag") declare tags: AsyncHasMany<Tag>;
-  @hasMany("elementText") declare elementTexts: AsyncHasMany<ElementText>;
+  @hasMany("tag", { inverse: "records", async: false })
+  declare tags: SyncHasMany<Tag>;
+  @hasMany("elementText", { async: false })
+  declare elementTexts: SyncHasMany<ElementText>;
 
   @belongsTo("collection", { async: false }) declare collection: Collection;
   @belongsTo("user", { async: false }) declare owner: User;

@@ -12,4 +12,5 @@ Router.map(function () {
   this.route("collections");
   this.route("elements");
   this.route("element-sets");
+  this.route("tags");
 });
