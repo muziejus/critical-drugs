@@ -1,4 +1,9 @@
-export default function (server) {
+function pickAFew(models, factor = 6) {
+  const shuffledModels = models.sort(() => 0.5 - Math.random());
+  return shuffledModels.slice(0, Math.floor(Math.random() * factor));
+}
+
+export default function(server) {
   server.loadFixtures();
   server.createList("collection", 2);
   const collections = server.schema.collections.all();
@@ -8,8 +13,7 @@ export default function (server) {
     collection:
       collections.models[Math.floor(Math.random() * collections.models.length)],
     tags() {
-      const shuffledTags = tags.models.sort(() => 0.5 - Math.random());
-      return shuffledTags.slice(0, Math.floor(Math.random() * 6));
+      return pickAFew(tags.models);
     },
   });
 

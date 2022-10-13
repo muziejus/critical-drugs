@@ -18,7 +18,7 @@ export default class ItemModel extends Model {
 
   @hasMany("tag", { inverse: "records", async: false })
   declare tags: SyncHasMany<Tag>;
-  @hasMany("elementText", { async: false })
+  @hasMany("elementText", { async: false, inverse: "record" })
   declare elementTexts: SyncHasMany<ElementText>;
 
   @belongsTo("collection", { async: false }) declare collection: Collection;

@@ -13,6 +13,12 @@
         <dd>{{item.added}}</dd>
         <dt>Modified</dt>
         <dd>{{item.modified}}</dd>
+        <dt>Tags</dt>
+        <dd>
+          {{#each item.tags as |tag|}}
+            {{tag.name}},
+          {{/each}}
+        </dd>
       </dl>
     </li>
   {{/each}}
