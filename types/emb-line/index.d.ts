@@ -1,4 +1,5 @@
 import Ember from "ember";
+import type MirageTestContext from "./mirage-test-context";
 
 declare global {
   // Prevents ESLint from "fixing" this via its auto-fix to turn it into a type
@@ -8,4 +9,4 @@ declare global {
   // interface Function extends Ember.FunctionPrototypeExtensions {}
 }
 
-export {};
+export { MirageTestContext };

@@ -9,6 +9,10 @@ declare const config: {
   locationType: "history" | "hash" | "none" | "auto";
   rootURL: string;
   APP: Record<string, unknown>;
+  omekaApi: {
+    host: string;
+    namespace: string;
+  };
 };
 
 export default config;

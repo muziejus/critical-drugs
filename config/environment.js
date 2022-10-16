@@ -6,6 +6,10 @@ module.exports = function (environment) {
     environment,
     rootURL: "/",
     locationType: "history",
+    omekaApi: {
+      host: "https://emb-line-omeka-site.com",
+      namespace: "api",
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

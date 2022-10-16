@@ -1,6 +1,7 @@
 import RESTAdapter from "@ember-data/adapter/rest";
 import type Store from "@ember-data/store";
 import { underscore } from "@ember/string";
+import config from "emb-line/config/environment";
 
 declare module "ember-data/types/registries/adapter" {
   export default interface AdapterRegistry {
@@ -9,8 +10,8 @@ declare module "ember-data/types/registries/adapter" {
 }
 
 export default class ApplicationAdapter extends RESTAdapter {
-  host = "https://emb-line-omeka-site.com";
-  namespace = "api";
+  host = config.omekaApi.host;
+  namespace = config.omekaApi.namespace;
 
   pathForType(modelName) {
     const inflect = {
