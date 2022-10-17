@@ -60,15 +60,19 @@ module("Acceptance | omeka api/items endpoint works", function (hooks) {
     const apiResponse = await fetch(`${fetchUrl}items/${id}`);
     const data = await apiResponse.json();
 
-    assert.true(typeof data.id === "number", "ID is a number.");
+    assert.strictEqual(typeof data.id, "number", "ID is a number.");
     assert.true(isOmekaUrl(data.url, "items", data.id), "URL is an Omeka URL.");
     assert.true(isIsoDate(data.added), "Date Added is an ISO 8601 string.");
     assert.true(
       isIsoDate(data.modified),
       "Date Modified is an ISO 8601 string"
     );
-    assert.true(typeof data.public === "boolean", "Public is a boolean.");
-    assert.true(typeof data.featured === "boolean", "Featured is a boolean.");
+    assert.strictEqual(typeof data.public, "boolean", "Public is a boolean.");
+    assert.strictEqual(
+      typeof data.featured,
+      "boolean",
+      "Featured is a boolean."
+    );
     assert.true(
       belongsTo(data.item_type, "item_types"),
       "Item belongs to a ItemType."

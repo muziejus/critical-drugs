@@ -3,7 +3,7 @@ function pickAFew(models, factor = 6) {
   return shuffledModels.slice(0, Math.floor(Math.random() * factor));
 }
 
-export default function(server) {
+export default function (server) {
   server.loadFixtures();
   server.createList("collection", 2);
   const collections = server.schema.collections.all();
