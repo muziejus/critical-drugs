@@ -1,4 +1,4 @@
-import { Model } from "miragejs";
+import { hasMany, Model } from "miragejs";
 
 export default Model.extend({
   // username
@@ -8,4 +8,5 @@ export default Model.extend({
   // salt
   // active
   // role
+  items: hasMany(),
 });

@@ -1,13 +1,16 @@
 import { module, test } from "qunit";
-import { visit, currentURL } from "@ember/test-helpers";
 import { setupApplicationTest } from "ember-qunit";
+import { setupMirage } from "ember-cli-mirage/test-support";
+import type { MirageTestContext } from "emb-line";
+import config from "emb-line/config/environment";
 
-module("Acceptance | omeka api/users endpoint works", function (hooks) {
+module("Acceptance | omeka api/users endpoint works", function(hooks) {
   setupApplicationTest(hooks);
+  setupMirage(hooks);
 
-  test("visiting /omeka-api/users-endpoint-works", async function (assert) {
-    await visit("/omeka-api/users-endpoint-works");
+  const fetchUrl = `${config.omekaApi.host}/${config.omekaApi.namespace}/`;
 
-    assert.equal(currentURL(), "/omeka-api/users-endpoint-works");
+  test.skip("api/users/:id returns a User", async function(this: MirageTestContext, assert) {
+    assert.ok(fetchUrl);
   });
 });

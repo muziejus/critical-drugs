@@ -77,19 +77,43 @@ export default class ApplicationSerializer extends RestSerializer {
   }
 
   buildPayload(primaryResource, ...args) {
-    const modelName = underscore(this.primaryResource.modelName);
-    const fks = primaryResource?.models[0]?.fks ?? [];
     const payload = super.buildPayload(primaryResource, ...args);
-    return payload.map(record => {
-      if (fks.length > 0) {
-        for (const foreignKey of fks) {
-          record = this.buildRelationship(record, foreignKey, modelName);
+    const modelName = underscore(this.primaryResource.modelName);
+
+    console.log(modelName, payload);
+
+    /*
+    let fks = [];
+    if (primaryResource?.models) {
+      fks = primaryResource.models[0].fks;
+    } else {
+      fks = primaryResource.fks;
+    }
+    if (payload.length > 0) {
+      console.log("payload has length");
+      return payload.map(record => {
+        if (fks.length > 0) {
+          for (const foreignKey of fks) {
+            record = this.buildRelationship(record, foreignKey, modelName);
+          }
         }
+        record.url = this.resourceUrl(
+          `${this._container.inflector.pluralize(modelName)}/${record.id}`
+        );
+        return record;
+      });
+    }
+
+    const record = payload;
+    if (fks.length > 0) {
+      for (const foreignKey of fks) {
+        record = this.buildRelationship(record, foreignKey, modelName);
       }
-      record.url = this.resourceUrl(
-        `${this._container.inflector.pluralize(modelName)}/${record.id}`
-      );
-      return record;
-    });
+    }
+    record.url = this.resourceUrl(
+      `${this._container.inflector.pluralize(modelName)}/${record.id}`
+    );
+    return record;
+      */
   }
 }

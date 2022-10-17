@@ -1,13 +1,16 @@
 import { module, test } from "qunit";
-import { visit, currentURL } from "@ember/test-helpers";
 import { setupApplicationTest } from "ember-qunit";
+import { setupMirage } from "ember-cli-mirage/test-support";
+import type { MirageTestContext } from "emb-line";
+import config from "emb-line/config/environment";
 
-module("Acceptance | omeka api/files endpoint works", function (hooks) {
+module("Acceptance | omeka api/files endpoint works", function(hooks) {
   setupApplicationTest(hooks);
+  setupMirage(hooks);
 
-  test("visiting /omeka-api/files-endpoint-works", async function (assert) {
-    await visit("/omeka-api/files-endpoint-works");
+  const fetchUrl = `${config.omekaApi.host}/${config.omekaApi.namespace}/`;
 
-    assert.equal(currentURL(), "/omeka-api/files-endpoint-works");
+  test.skip("api/files/:id returns a File", async function(this: MirageTestContext, assert) {
+    assert.ok(fetchUrl);
   });
 });
