@@ -52,10 +52,21 @@ module("Acceptance | omeka api/items endpoint works", function (hooks) {
       tags,
     });
 
-    // this.server.create("elementText", {
-    //   name: "The item title",
-    //   record: item,
-    // });
+    const textElement = this.server.schema.elements.find(1);
+
+    this.server.create("elementText", {
+      html: true,
+      text: "This is <i>the element</i> text.",
+      record: item,
+      element: this.server.schema.elements.find(1),
+    });
+
+    this.server.create("elementText", {
+      html: false,
+      text: "Contributor McContributor",
+      record: item,
+      element: this.server.schema.elements.find(37),
+    });
 
     const apiResponse = await fetch(`${fetchUrl}items/${id}`);
     const data = await apiResponse.json();

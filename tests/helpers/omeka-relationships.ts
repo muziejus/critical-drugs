@@ -9,7 +9,6 @@ export function belongsTo(
   relatedItem: RelatedItemResponse,
   pluralType: string
 ) {
-  console.log(relatedItem);
   return (
     typeof relatedItem.id === "number" &&
     isOmekaUrl(relatedItem.url, pluralType, relatedItem.id) &&
@@ -33,7 +32,6 @@ export function hasManyCollected() {
 }
 
 export function hasManyElementTexts(elementTexts: ElementTextResponse[]) {
-  if (elementTexts.length === 0) return false;
   const test = elementTexts.map(elementText => isAnElementText(elementText));
   return test.filter(element => element === false).length === 0;
 }

@@ -6,7 +6,6 @@ export default class ApplicationSerializer extends RestSerializer {
   embed = true;
 
   serialize(primaryResource, request) {
-    console.log("primaryresource", primaryResource);
     let payload = super.serialize(primaryResource);
     const modelName = underscore(primaryResource.modelName);
     let fks = [];
@@ -64,7 +63,6 @@ export default class ApplicationSerializer extends RestSerializer {
           }
 
           if (/^(elements)$/.test(collectionKey)) {
-            console.log("in elements");
             record[collectionKey] = {
               count: collection.length,
               url: this.resourceUrl(
@@ -72,6 +70,29 @@ export default class ApplicationSerializer extends RestSerializer {
               ),
               resource: collectionKey,
             };
+          }
+
+          if (collectionKey === "element_texts") {
+            record[collectionKey] = collection.map(elementText => {
+              return {
+                html: elementText.html,
+                text: elementText.text,
+                element_set: {
+                  id: parseInt(elementText.element.element_set.id, 10),
+                  url: this.resourceUrl(
+                    `element_sets/${elementText.element.element_set.id}`
+                  ),
+                  name: elementText.element.element_set.name,
+                  resource: "element_sets",
+                },
+                element: {
+                  id: parseInt(elementText.element.id, 10),
+                  url: this.resourceUrl(`elements/${elementText.element.id}`),
+                  name: elementText.element.name,
+                  resource: "elements",
+                },
+              };
+            });
           }
         }
       }
