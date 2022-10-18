@@ -62,7 +62,7 @@ export default class ApplicationSerializer extends RestSerializer {
             });
           }
 
-          if (/^(files|elements)$/.test(collectionKey)) {
+          if (/^(items|files|elements)$/.test(collectionKey)) {
             record[collectionKey] = {
               count: collection.length,
               url: this.resourceUrl(

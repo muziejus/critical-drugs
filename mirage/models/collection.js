@@ -6,6 +6,6 @@ export default Model.extend({
   // added
   // modified
   owner: belongsTo("user"),
-  tags: hasMany(),
+  items: hasMany(),
   elementTexts: hasMany(),
 });

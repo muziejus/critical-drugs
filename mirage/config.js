@@ -1,6 +1,6 @@
 import { createServer } from "miragejs";
 
-export default function (config) {
+export default function(config) {
   let finalConfig = {
     ...config,
     routes() {
@@ -16,6 +16,7 @@ export default function (config) {
       // added_since: string; // (ISO 8601)
       // modified_since: string; // (ISO 8601)
       // owner: integer;
+      this.get("/collections/:id");
       this.get("/element_sets");
       // params:
       // name: string;
