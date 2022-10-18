@@ -22,7 +22,7 @@ declare module "omeka-api" {
     copyright?: string;
   }
 
-  interface HasManyResponse {
+  interface HasSummaryOfManyResponse {
     count?: number;
     url: string;
     resource: OmekaResource;

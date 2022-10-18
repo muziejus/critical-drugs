@@ -1,6 +1,17 @@
 import config from "emb-line/config/environment";
 
-export default function isOmekaUrl(url: string, resource: string, id: number) {
+export default function isOmekaUrl(
+  url: string,
+  resource: string,
+  id: number,
+  hasMany: string | null = null
+) {
+  if (hasMany) {
+    return (
+      url ===
+      `${config.omekaApi.host}/${config.omekaApi.namespace}/${hasMany}?${resource}=${id}`
+    );
+  }
   return (
     url ===
     `${config.omekaApi.host}/${config.omekaApi.namespace}/${resource}/${id}`

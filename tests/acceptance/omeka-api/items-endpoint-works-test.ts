@@ -12,13 +12,13 @@ import {
   hasManyElementTexts,
 } from "emb-line/tests/helpers/omeka-relationships";
 
-module("Acceptance | omeka api/items endpoint works", function (hooks) {
+module("Acceptance | omeka api/items endpoint works", function(hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
 
   const fetchUrl = `${config.omekaApi.host}/${config.omekaApi.namespace}/`;
 
-  test("api/items/:id returns an Item", async function (this: MirageTestContext, assert) {
+  test("api/items/:id returns an Item", async function(this: MirageTestContext, assert) {
     this.server.loadFixtures();
     const id = Math.floor(Math.random() * 100);
     const date = new Date();
@@ -52,8 +52,6 @@ module("Acceptance | omeka api/items endpoint works", function (hooks) {
       collection,
       tags,
     });
-
-    const textElement = this.server.schema.elements.find(1);
 
     this.server.create("elementText", {
       html: true,
@@ -132,5 +130,5 @@ module("Acceptance | omeka api/items endpoint works", function (hooks) {
   test.skip("api/items?range=:range returns all items in a range.");
   test.skip("api/items?search=:query returns all items matching a query.");
 
-  test.skip("api/items returns an array of Items.", async function (this: MirageTestContext, assert) {});
+  test.skip("api/items returns an array of Items.", async function(this: MirageTestContext, assert) { });
 });

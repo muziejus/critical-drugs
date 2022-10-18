@@ -1,6 +1,7 @@
 import isOmekaUrl from "emb-line/tests/helpers/is-omeka-url";
 import {
   ElementTextResponse,
+  HasSummaryOfManyResponse,
   RelatedItemResponse,
   RelatedNamedItemResponse,
 } from "omeka-api";
@@ -27,8 +28,17 @@ export function hasMany(
   return test.filter(element => element === false).length === 0;
 }
 
-export function hasManyCollected() {
-  return true;
+export function hasSummaryOfMany(
+  summary: HasSummaryOfManyResponse,
+  pluralType: string,
+  resource: string,
+  id: number
+) {
+  return (
+    typeof summary.count === "number" &&
+    summary.resource === pluralType &&
+    isOmekaUrl(summary.url, resource, id, pluralType)
+  );
 }
 
 export function hasManyElementTexts(elementTexts: ElementTextResponse[]) {
