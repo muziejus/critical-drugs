@@ -7,6 +7,7 @@ import isIsoDate from "emb-line/tests/helpers/is-iso-date";
 import isOmekaUrl from "emb-line/tests/helpers/is-omeka-url";
 import {
   belongsTo,
+  hasSummaryOfMany,
   hasMany,
   hasManyElementTexts,
 } from "emb-line/tests/helpers/omeka-relationships";
@@ -68,6 +69,10 @@ module("Acceptance | omeka api/items endpoint works", function (hooks) {
       element: this.server.schema.elements.find(37),
     });
 
+    this.server.createList("file", 5, {
+      item,
+    });
+
     const apiResponse = await fetch(`${fetchUrl}items/${id}`);
     const data = await apiResponse.json();
 
@@ -97,6 +102,10 @@ module("Acceptance | omeka api/items endpoint works", function (hooks) {
       "Item belongs to a Collection."
     );
     assert.true(hasMany(data.tags, "tags"), "Item has many Tags.");
+    assert.true(
+      hasSummaryOfMany(data.files, "files", "item", data.id),
+      "Item has a summary of many Files."
+    );
 
     assert.true(
       hasManyElementTexts(data.element_texts),

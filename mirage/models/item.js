@@ -6,4 +6,5 @@ export default Model.extend({
   owner: belongsTo("user"),
   tags: hasMany(),
   elementTexts: hasMany(),
+  files: hasMany(),
 });
