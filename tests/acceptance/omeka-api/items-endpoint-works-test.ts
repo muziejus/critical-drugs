@@ -38,7 +38,7 @@ module("Acceptance | omeka api/items endpoint works", function (hooks) {
 
     const collection = this.server.create("collection");
 
-    const tags = this.server.createList("tag", 10);
+    const tags = this.server.createList("tag", 4);
 
     const item = this.server.create("item", {
       id,
@@ -102,9 +102,26 @@ module("Acceptance | omeka api/items endpoint works", function (hooks) {
       hasManyElementTexts(data.element_texts),
       "Item has many ElementTexts."
     );
-
-    assert.strictEqual(id, data.id);
   });
+
+  test.skip("api/items?collection=:id returns all items in a collection.");
+  test.skip("api/items?item_type=:id returns all items of a specific type.");
+  test.skip("api/items?public returns all public items.");
+  test.skip("api/items?featured returns all featured items.");
+  test.skip(
+    "api/items?added_since=:date returns all items added since a time."
+  );
+  test.skip(
+    "api/items?modified_since=:date returns all items modified since a time."
+  );
+  test.skip("api/items?owner=:id returns all items owned by a user.");
+  test.skip("api/items?tags=:tags returns all items with the specified tags.");
+  test.skip(
+    "api/items?excludeTags=:tags returns all items without the specified tags."
+  );
+  test.skip("api/items?hasImage returns all items with an image.");
+  test.skip("api/items?range=:range returns all items in a range.");
+  test.skip("api/items?search=:query returns all items matching a query.");
 
   test.skip("api/items returns an array of Items.", async function (this: MirageTestContext, assert) {});
 });
