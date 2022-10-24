@@ -19,6 +19,35 @@ export default class ApplicationSerializer extends RestSerializer {
         this.buildRelationshipsAndAddUrl(record, fks, modelName)
       );
     }
+    if (request.queryParams) {
+      for (const param in request.queryParams) {
+        console.log(param);
+        if (/^(collection|item_type|owner)$/.test(param)) {
+          // We are searching on id.
+          payload = payload.filter(
+            element =>
+              element[param].id === parseInt(request.queryParams[param], 10)
+          );
+        }
+        if (/^(public|featured)$/.test(param)) {
+          // We are searching on a boolean.
+          payload = payload.filter(element => element[param] === true);
+        }
+        if (/^(added|modified)_since$/.test(param)) {
+          // We are searching on a date.
+          payload = payload.filter(
+            element =>
+              new Date(element[param.split("_")[0]]) >=
+              new Date(request.queryParams[param])
+          );
+        }
+        if (/^(tags|excludeTags|hasImage|range|search)$/.test(param)) {
+          console.log(
+            `Adapter response for ${param} query parameter not yet implemented`
+          );
+        }
+      }
+    }
     return payload;
   }
 
