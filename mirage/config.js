@@ -1,6 +1,6 @@
 import { createServer } from "miragejs";
 
-export default function(config) {
+export default function (config) {
   let finalConfig = {
     ...config,
     routes() {

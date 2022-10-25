@@ -1,7 +1,9 @@
 import RESTAdapter from "@ember-data/adapter/rest";
 import type Store from "@ember-data/store";
+import { Snapshot } from "@ember-data/store";
 import { underscore } from "@ember/string";
 import config from "emb-line/config/environment";
+import Inflector from 'ember-inflector';
 
 declare module "ember-data/types/registries/adapter" {
   export default interface AdapterRegistry {
@@ -20,6 +22,34 @@ export default class ApplicationAdapter extends RESTAdapter {
     return inflect[modelName] ?? super.pathForType(modelName);
   }
 
+  addRelatedModel(relatedModel: string, [relationshipDefinition: RelationshipDefinition], item) {
+    if (relationshipDefinition.meta.kind === "belongsTo" && item[relatedModel]) {
+      return {
+        data: {
+          type: relationshipDefinition.meta.name,
+          id: item[relatedModel].id
+        }
+      }
+    }
+
+    return {}
+  }
+
+  async findRecord(store: Store, schema: ModelSchema, queryId: string, snapshot: Snapshot) {
+    const payload = await super.findRecord(store, schema, queryId, snapshot);
+    console.log(payload);
+    const { id, ...attributes } = payload;
+    const out = {
+      data: {
+        id
+        type: schema.modelName,
+        attributes
+      }
+    }
+    console.log(out);
+    return out;
+  }
+
   async findAll(
     store: Store,
     schema: ModelSchema,
@@ -33,19 +63,13 @@ export default class ApplicationAdapter extends RESTAdapter {
       snapshotRecordArray
     );
     console.log("payloadd", payload);
-    for (const [relatedModel, i] of schema.relationships) {
-      console.log(relatedModel, i);
-    }
     const out = {
       data: payload.map(item => {
         const { id, ...attributes } = item;
         const relationships = {};
-        // // Crashing on bad keys elementTexts. Build out mirage better.
-        // for (const [relatedModel, models] of schema.relationships) {
-        //   for (const model of models) {
-        //     relationships[model.meta.key] = "barf";
-        //   }
-        // }
+        for (const [relatedModel, i] of schema.relationships) {
+          relationships[relatedModel] = this.addRelatedModel(relatedModel, i, item)
+        }
         return {
           id,
           type: schema.modelName,
@@ -54,7 +78,7 @@ export default class ApplicationAdapter extends RESTAdapter {
         };
       }),
     };
-    console.log("out", out.data[0]);
+    console.log("out", out);
     return out;
   }
 }
