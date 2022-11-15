@@ -3,8 +3,13 @@ function pickAFew(models, factor = 6) {
   return shuffledModels.slice(0, Math.floor(Math.random() * factor));
 }
 
-export default function (server) {
+export default function(server) {
   server.loadFixtures();
+  const exhibit = server.create("neatline-exhibit");
+  const neatlineRecords = server.createList("neatline-record", 10, {
+    exhibit,
+  });
+  console.log(neatlineRecords);
   server.createList("collection", 2);
   const collections = server.schema.collections.all();
   server.createList("tag", 20);
