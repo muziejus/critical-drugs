@@ -41,7 +41,7 @@ export default class ApplicationAdapter extends RESTAdapter {
     const { id, ...attributes } = payload;
     const out = {
       data: {
-        id
+        id,
         type: schema.modelName,
         attributes
       }
