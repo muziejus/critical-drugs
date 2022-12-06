@@ -1,0 +1,46 @@
+{
+  "name": "embeka",
+  "version": "0.0.0",
+  "keywords": [
+    "ember-addon"
+  ],
+  "description": "An addon for creating ambitious Omeka sites with Ember",
+  "repository": "https://github.com/muziejus/embeka",
+  "license": "MIT",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
+  "devDependencies": {
+    "@babel/core": "7.20.5",
+    "@embroider/addon-dev": "^3.0.0",
+    "@glimmer/component": "^1.1.2",
+    "@glimmer/tracking": "^1.1.2",
+    "@glint/template": "^0.8.3",
+    "@types/ember__application": "^4.0.0",
+    "@types/ember__component": "^4.0.8",
+    "@types/ember__debug": "^4.0.0",
+    "@types/ember__destroyable": "^4.0.0",
+    "@types/ember__helper": "^4.0.0",
+    "@types/ember__object": "^4.0.2",
+    "@types/ember__owner": "^4.0.0",
+    "@types/ember__runloop": "^4.0.1",
+    "@types/ember__test-helpers": "^2.0.0",
+    "rollup": "3.6.0",
+    "rollup-plugin-ts": "^3.0.0",
+    "typescript": "~4.9.0"
+  },
+  "ember": {
+    "edition": "octane"
+  },
+  "ember-addon": {
+    "version": 2,
+    "type": "addon",
+    "main": "addon-main.cjs",
+    "app-js": {}
+  },
+  "packageManager": "pnpm@7.18.1",
+  "volta": {
+    "extends": "../package.json"
+  }
+}
