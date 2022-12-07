@@ -7,6 +7,7 @@ export default class ApplicationSerializer extends RestSerializer {
 
   serialize(primaryResource, request) {
     let payload = super.serialize(primaryResource);
+    console.log("payload from REST Serializer", payload);
     const modelName = underscore(primaryResource.modelName);
     let fks = [];
     if (request.params.id) {
@@ -15,9 +16,9 @@ export default class ApplicationSerializer extends RestSerializer {
       payload = this.buildRelationshipsAndAddUrl(payload, fks, modelName);
     } else {
       fks = primaryResource.models[0].fks;
-      payload = payload.map(record =>
-        this.buildRelationshipsAndAddUrl(record, fks, modelName)
-      );
+      payload = payload.map(record => {
+        return this.buildRelationshipsAndAddUrl(record, fks, modelName);
+      });
     }
     if (request.queryParams) {
       for (const param in request.queryParams) {
@@ -73,6 +74,7 @@ export default class ApplicationSerializer extends RestSerializer {
   }
 
   buildRelationshipsAndAddUrl(record, foreignKeys, modelName) {
+    console.log(record, foreignKeys, modelName);
     for (const foreignKey of foreignKeys) {
       if (/Ids$/.test(foreignKey)) {
         const collectionKey = this._container.inflector.pluralize(
@@ -129,12 +131,16 @@ export default class ApplicationSerializer extends RestSerializer {
       if (/Id$/.test(foreignKey)) {
         let belongsToKey = underscore(foreignKey.replace(/Id$/, ""));
         if (record[belongsToKey]) {
+          console.log(`foreignKey is ${foreignKey}`);
+          console.log(`yes, record is`, record);
+          console.log(`yes, record.collection is`, record.collection);
           const belongsTo = record[belongsToKey];
           let belongsToKeyPlural =
             this._container.inflector.pluralize(belongsToKey);
           if (belongsToKeyPlural === "owners") {
             belongsToKeyPlural = "users";
           }
+          console.log(`and belongsTo is`, belongsTo);
           record[belongsToKey] = {
             id: parseInt(belongsTo.id, 10),
             url: this.resourceUrl(`${belongsToKeyPlural}/${belongsTo.id}`),
