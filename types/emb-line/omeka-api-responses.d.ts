@@ -6,7 +6,10 @@ declare module "omeka-api" {
     | "items"
     | "tags"
     | "element_sets"
-    | "elements";
+    | "elements"
+    | "exhibits"
+    | "exhibit_pages"
+    | "simple_pages";
 
   interface OmekaApiEntity {
     id: number;
@@ -45,14 +48,35 @@ declare module "omeka-api" {
     element: RelatedNamedItemResponse;
   }
 
-  interface ItemCollectionResponse extends OmekaApiEntity {
+  interface PublicFeaturedAddedModifiedResponse extends OmekaApiEntity {
     public: boolean;
     featured: boolean;
     added: string;
     modified: string;
+  }
+
+  interface ItemCollectionResponse extends PublicFeatureAddedModifiedResponse {
     owner?: RelatedItemResponse;
     element_texts: ElementTextResponse[];
     extended_resources: [];
+  }
+
+  interface ExhibitResponse extends PublicFeatureAddedModifiedResponse {
+    owner?: RelatedItemResponse;
+    title?: string;
+    slug?: string;
+    description?: string;
+    credits?: string;
+    exhibit_pages?: HasSummaryOfManyResponse;
+  }
+
+  interface ExhibitPageResponse extends OmekaApiEntity {
+    title?: string;
+    slug?: string;
+    order?: number;
+    parent?: number;
+    exhibit?: RelatedItemResponse;
+    page_blocks?: PageBlockResponse[];
   }
 
   interface ItemResponse extends ItemCollectionResponse {
@@ -118,5 +142,22 @@ declare module "omeka-api" {
   interface TagResponse extends OmekaApiEntity {
     name?: string;
     extended_resources: [];
+  }
+
+  interface PageBlockResponse {
+    id: number;
+    page_id: number;
+    layout?: string;
+    options?: Record<string, string>;
+    text?: string;
+    order?: number;
+    attachments: Attachment[];
+  }
+
+  interface Attachment {
+    id: number;
+    caption?: string;
+    item?: RelatedItemResponse;
+    file?: RelatedItemResponse;
   }
 }
