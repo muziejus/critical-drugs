@@ -62,6 +62,7 @@ export default function (config) {
         author: "The Emb-Line Team",
         copyright: "Creative Commons Attribution-ShareAlike 3.0 License",
       }));
+      this.get("/tags");
       this.get("/exhibits");
       // params:
       // tag
