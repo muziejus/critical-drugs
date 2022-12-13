@@ -25,9 +25,9 @@ export default {
         fileName: "tsconfig.json",
         hook: (config) => ({
           ...config,
-          declaration: true,
-          declarationMap: true,
-          declarationDir: "./dist",
+          // declaration: true,
+          // declarationMap: true,
+          // declarationDir: "./dist",
         }),
       },
     }),
@@ -36,7 +36,7 @@ export default {
     // "app" tree. Things in here should also be in publicEntrypoints above, but
     // not everything in publicEntrypoints necessarily needs to go here.
     addon.appReexports([
-      "adapters/application.ts",
+      // "adapters/application.ts",
       "components/welcome-page.js",
     ]),
 

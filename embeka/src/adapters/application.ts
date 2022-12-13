@@ -2,12 +2,17 @@ import RESTAdapter from "@ember-data/adapter/rest";
 import type Store from "@ember-data/store";
 import { Snapshot } from "@ember-data/store";
 import ModelRegistry from "ember-data/types/registries/model";
+import DS from "ember-data";
+// import { RelationshipDefinition } from "@ember-data/model/-private/relationship-meta";
 
-declare module "ember-data/types/registries/adapter" {
-  export default interface AdapterRegistry {
-    application: EmbekaApplicationAdapter;
-  }
+interface RelationshipDefinition {
+  meta: {
+    name: string;
+    kind: "belongsTo" | "hasMany";
+  };
 }
+
+// interface SnapshotRecordArray extends DS.SnapshotRecordArray<string | number> { }
 
 export default class EmbekaApplicationAdapter extends RESTAdapter {
   host = "";
@@ -23,7 +28,7 @@ export default class EmbekaApplicationAdapter extends RESTAdapter {
   addRelatedModel(
     relatedModel: string,
     [relationshipDefinition]: [RelationshipDefinition],
-    item
+    item: Record<string, { id: string }>
   ) {
     if (
       relationshipDefinition.meta.kind === "belongsTo" &&
@@ -45,27 +50,33 @@ export default class EmbekaApplicationAdapter extends RESTAdapter {
     type: ModelRegistry[K],
     queryId: string,
     snapshot: Snapshot<K>
-  ) {
+  ): Promise<any> {
     console.log("type", type);
     const payload = await super.findRecord(store, type, queryId, snapshot);
-    console.log(payload);
-    const { id, ...attributes } = payload;
-    const out = {
-      data: {
-        id,
-        type: type,
-        attributes,
-      },
-    };
-    console.log(out);
-    return out;
+    return new Promise((resolve, reject) => {
+      console.log(payload);
+      const { id, ...attributes } = payload;
+      const out = {
+        data: {
+          id,
+          type: type,
+          attributes,
+        },
+      };
+      console.log(out);
+      if (out) {
+        resolve(out);
+      } else {
+        reject(out);
+      }
+    });
   }
 
   async findAll<K extends keyof ModelRegistry>(
     store: Store,
     schema: ModelRegistry[K],
     sinceToken: string,
-    snapshotRecordArray: SnapshotRecordArray<K>
+    snapshotRecordArray: DS.SnapshotRecordArray<K>
   ) {
     console.log("findAll schema", schema);
     // ): Promise<AdapterPayload> {
@@ -77,7 +88,7 @@ export default class EmbekaApplicationAdapter extends RESTAdapter {
     );
     console.log("payloadd", payload);
     const out = {
-      data: payload.map((item) => {
+      data: payload.map((item: Record<string, string>) => {
         const { id, ...attributes } = item;
         const relationships = {};
         for (const [relatedModel, i] of schema.relationships) {

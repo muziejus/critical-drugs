@@ -57,10 +57,12 @@
     "edition": "octane"
   },
   "ember-addon": {
-    "version": 2,
+    "main": "addon-main.js",
     "type": "addon",
-    "main": "addon-main.cjs",
-    "app-js": {}
+    "version": 2,
+    "app-js": {
+      "./components/welcome-page.js": "./dist/_app_/components/welcome-page.js"
+    }
   },
   "packageManager": "pnpm@7.18.1",
   "volta": {
@@ -76,11 +78,6 @@
     "addon-main.js",
     "dist"
   ],
-  "ember-addon": {
-    "main": "addon-main.js",
-    "type": "addon",
-    "version": 2
-  },
   "dependencies": {
     "@embroider/addon-shim": "^1.8.4"
   }

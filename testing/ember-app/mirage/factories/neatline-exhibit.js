@@ -21,11 +21,12 @@ export default Factory.extend({
     return this.title.replace(/ /g, "-").replace(/[“”]/g, "").toLowerCase();
   },
   narrative() {
-    return `<p>This is a narrative describing <i>${this.title
-      }</i>. And here is some lorem ipsum. ${faker.lorem.paragraphs(
-        3,
-        "</p>\n<p>"
-      )}</p>`;
+    return `<p>This is a narrative describing <i>${
+      this.title
+    }</i>. And here is some lorem ipsum. ${faker.lorem.paragraphs(
+      3,
+      "</p>\n<p>"
+    )}</p>`;
   },
   widgets: null,
   item_query: null,
