@@ -7,8 +7,8 @@ module.exports = function (environment) {
     rootURL: "/",
     locationType: "history",
     omekaApi: {
-      host: "https://emb-line-omeka-site.com",
-      namespace: "api",
+      host: "https://samuelkroberts.sandbox.library.columbia.edu",
+      namespace: "CMS/api",
     },
     EmberENV: {
       FEATURES: {
@@ -29,6 +29,7 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV["ember-cli-mirage"] = { enabled: false };
   }
 
   if (environment === "test") {
