@@ -1,14 +1,14 @@
 "use strict";
 
-module.exports = function (environment) {
+module.exports = function(environment) {
   let ENV = {
     modulePrefix: "emb-line",
     environment,
     rootURL: "/",
     locationType: "history",
     omekaApi: {
-      host: "https://emb-line-omeka-site.com",
-      namespace: "api",
+      host: "https://samuelkroberts.sandbox.library.columbia.edu",
+      namespace: "CMS/api",
     },
     EmberENV: {
       FEATURES: {
