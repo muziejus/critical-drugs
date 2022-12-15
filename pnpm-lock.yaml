@@ -54,6 +54,7 @@ specifiers:
   ember-cli-htmlbars: ^6.1.0
   ember-cli-inject-live-reload: ^2.1.0
   ember-cli-mirage: ^2.4.0
+  ember-cli-netlify: ^0.4.1
   ember-cli-sri: ^2.1.1
   ember-cli-terser: ^4.0.2
   ember-cli-typescript: ^5.1.1
@@ -138,6 +139,7 @@ devDependencies:
   ember-cli-htmlbars: 6.1.1
   ember-cli-inject-live-reload: 2.1.0
   ember-cli-mirage: 2.4.0_edf7sptly7npsc6b3nrhwgeuyy
+  ember-cli-netlify: 0.4.1
   ember-cli-sri: 2.1.1
   ember-cli-terser: 4.0.2
   ember-cli-typescript: 5.1.1
@@ -8421,6 +8423,11 @@ packages:
       - supports-color
       - webpack-cli
       - webpack-command
+    dev: true
+
+  /ember-cli-netlify/0.4.1:
+    resolution: {integrity: sha512-EDxrjRl1WoytehV7c/7hdFDyubSi++Yxcr3DbZ4wZKVKB2bdfP+A+PEcFIF+s7JG96vPnBIeOGkDNTye9K231A==}
+    engines: {node: 10.* || >= 12}
     dev: true
 
   /ember-cli-normalize-entity-name/1.0.0:
