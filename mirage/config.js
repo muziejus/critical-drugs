@@ -73,6 +73,7 @@ export default function (config) {
       this.get("/tags/:id");
       this.get("/users/:id");
       */
+      this.passthrough();
     },
   };
 
