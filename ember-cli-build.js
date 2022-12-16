@@ -22,6 +22,33 @@ module.exports = function (defaults) {
 
   const { Webpack } = require("@embroider/webpack");
   return require("@embroider/compat").compatBuild(app, Webpack, {
+    packagerOptions: {
+      cssLoaderOptions: {
+        sourceMap: process.env.EMBER_ENV !== "production" ? true : false,
+      },
+      webpackConfig: {
+        module: {
+          rules: [
+            {
+              test: f => /\.css$/i.test(f),
+              exclude: /node_modules/,
+              use: [
+                {
+                  loader: "postcss-loader",
+                  options: {
+                    sourceMap:
+                      process.env.EMBER_ENV !== "production" ? true : false,
+                    postcssOptions: {
+                      config: "./postcss.config.js",
+                    },
+                  },
+                },
+              ],
+            },
+          ],
+        },
+      },
+    },
     skipBabel: [
       {
         package: "qunit",
