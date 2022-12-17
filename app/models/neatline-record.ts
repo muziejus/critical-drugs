@@ -31,8 +31,8 @@ export default class NeatlineRecord extends Model {
   @attr declare fillOpacitySelect?: string;
   @attr declare strokeOpacity?: string;
   @attr declare strokeOpacitySelect?: string;
-  @attr declare strokeWidth?: 2;
-  @attr declare pointRadius?: 10;
+  @attr declare strokeWidth?: number;
+  @attr declare pointRadius?: number;
   @attr declare zindex?: number;
   @attr declare weight?: number;
   @attr declare startDate?: string;
