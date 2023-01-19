@@ -7,7 +7,8 @@ module.exports = function (environment) {
     rootURL: "/",
     locationType: "history",
     omekaApi: {
-      host: "https://samuelkroberts.sandbox.library.columbia.edu",
+      // host: "https://samuelkroberts.sandbox.library.columbia.edu",
+      host: "https://moacirp.sandbox.library.columbia.edu",
       namespace: "CMS/api",
     },
     EmberENV: {
