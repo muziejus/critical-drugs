@@ -89,17 +89,6 @@ export default class Index extends Route {
   @service declare store: Store;
 
   async model() {
-    const exhibitsResponse = await fetch(
-      "/skroberts-data/neatline_exhibits.json"
-    );
-    const exhibits: NeatlineJsonExhibit[] = await exhibitsResponse.json();
-    const recordsResponse = await fetch(
-      "/skroberts-data/neatline_records.json"
-    );
-    const records: NeatlineJsonRecord[] = await recordsResponse.json();
-    return {
-      exhibits,
-      records,
-    };
+    return this.store.findAll("neatline-record");
   }
 }
