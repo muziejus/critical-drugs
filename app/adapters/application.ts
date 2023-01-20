@@ -18,6 +18,8 @@ export default class ApplicationAdapter extends RESTAdapter {
   pathForType(modelName) {
     const inflect = {
       "element-set": "element_sets",
+      "neatline-record": "neatline_records",
+      "neatline-exhibit": "neatline_exhibits"
     };
     return inflect[modelName] ?? super.pathForType(modelName);
   }
