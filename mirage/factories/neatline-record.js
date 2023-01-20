@@ -26,12 +26,11 @@ export default Factory.extend({
     return `An item named “${this.title}”`;
   },
   body() {
-    return `<p>This is body text describing <i>${
-      this.title
-    }</i>. And here is some lorem ipsum. ${faker.lorem.paragraphs(
-      3,
-      "</p>\n<p>"
-    )}</p>`;
+    return `<p>This is body text describing <i>${this.title
+      }</i>. And here is some lorem ipsum. ${faker.lorem.paragraphs(
+        3,
+        "</p>\n<p>"
+      )}</p>`;
   },
   coverage() {
     const butlerLibrary = {
