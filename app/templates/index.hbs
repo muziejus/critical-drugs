@@ -1,22 +1,5 @@
 <div class="flex flex-row w-full">
-  <LeafletMap @lat="41" @lng="-73" @zoom="3" class="h-96 w-3/4" as |layers|>
-    <layers.tile @url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"/>
-    {{#each @model as |point|}}
-      {{#if point.coverage}}
-        {{#let (convert-coordinates point.coverage) as |coordinates|}}
-        <layers.marker @lat={{coordinates.latitude}}
-          @lng={{coordinates.longitude}}
-          @title={{point.itemTitle}}
-          as |marker|>
-          <marker.popup>
-            <h3>itemTitle {{point.itemTitle}}</h3>
-            </marker.popup>
-          </layers.marker>
-        {{/let}}
-      {{/if}}
-    {{/each}}
-
-  </LeafletMap>
+  <NeatlineMap @records={{@model}} />
   <div>
     <p>
       waypoints
