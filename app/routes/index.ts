@@ -1,7 +1,6 @@
 import Route from "@ember/routing/route";
 import { service } from "@ember/service";
 import Store from "@ember-data/store";
-import fetch from "fetch";
 
 interface BelongsToResource {
   id: number;

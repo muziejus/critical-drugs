@@ -39,6 +39,9 @@ export default class ApplicationAdapter extends RESTAdapter {
     const payload = await super.findRecord(store, schema, queryId, snapshot);
     console.log(payload);
     const { id, ...attributes } = payload;
+    if (attributes.element_texts) {
+      attributes.element_texts = this.formatElementTexts(attributes.element_texts);
+    }
     const out = {
       data: {
         id,
@@ -66,6 +69,9 @@ export default class ApplicationAdapter extends RESTAdapter {
     const out = {
       data: payload.map(item => {
         const { id, ...attributes } = item;
+        if (attributes.element_texts) {
+          attributes.element_texts = this.formatElementTexts(attributes.element_texts);
+        }
         const relationships = {};
         for (const [relatedModel, i] of schema.relationships) {
           relationships[relatedModel] = this.addRelatedModel(relatedModel, i, item)
@@ -80,5 +86,15 @@ export default class ApplicationAdapter extends RESTAdapter {
     };
     console.log("out", out);
     return out;
+  }
+
+  private formatElementTexts(elementTexts: ElementTextResponse[]) {
+    const record: Record<string, string> = {};
+    elementTexts.map(elementText => {
+      const key = elementText.element_set.id === 1 ? `DC${elementText.element.name.toLowerCase()}` : elementText.element.name.toLowerCase();
+      record[key] = elementText.text;
+    })
+
+    return record;
   }
 }
