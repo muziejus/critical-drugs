@@ -1,9 +1,7 @@
 import RESTAdapter from "@ember-data/adapter/rest";
 import type Store from "@ember-data/store";
 import { Snapshot } from "@ember-data/store";
-import { underscore } from "@ember/string";
 import config from "emb-line/config/environment";
-import Inflector from 'ember-inflector';
 
 declare module "ember-data/types/registries/adapter" {
   export default interface AdapterRegistry {

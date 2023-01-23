@@ -1,3 +1,4 @@
+import { underscore } from "@ember/string";
 import JSONAPISerializer from "@ember-data/serializer/json-api";
 
 declare module "ember-data/types/registries/serializer" {
@@ -6,4 +7,8 @@ declare module "ember-data/types/registries/serializer" {
   }
 }
 
-export default class Application extends JSONAPISerializer {}
+export default class Application extends JSONAPISerializer {
+  keyForAttribute(attr: string) {
+    return underscore(attr);
+  }
+}

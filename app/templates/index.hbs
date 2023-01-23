@@ -3,10 +3,10 @@
     <layers.tile @url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"/>
     {{#each @model as |point|}}
       {{#if point.coverage}}
-        {{log point}}
         {{#let (convert-coordinates point.coverage) as |coordinates|}}
         <layers.marker @lat={{coordinates.latitude}}
           @lng={{coordinates.longitude}}
+          @title={{point.itemTitle}}
           as |marker|>
           <marker.popup>
             <h3>itemTitle {{point.itemTitle}}</h3>
