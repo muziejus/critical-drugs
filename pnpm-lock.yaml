@@ -17,6 +17,10 @@ specifiers:
   '@turf/helpers': ^6.5.0
   '@turf/projection': ^6.5.0
   '@turf/turf': ^6.5.0
+  '@types/d3': ^7.4.0
+  '@types/d3-axis': ^3.0.1
+  '@types/d3-scale': ^4.0.2
+  '@types/d3-selection': ^3.0.3
   '@types/ember': ^4.0.1
   '@types/ember-data': ^4.4.4
   '@types/ember-data__adapter': ^4.0.0
@@ -69,7 +73,7 @@ specifiers:
   ember-inflector: ^4.0.2
   ember-leaflet: ^5.0.2
   ember-load-initializers: ^2.1.2
-  ember-modifier: ^4.0.0
+  ember-modifier: 3.2.7
   ember-page-title: ^7.0.0
   ember-qunit: ^5.1.5
   ember-resolver: ^8.0.3
@@ -113,12 +117,16 @@ devDependencies:
   '@glimmer/component': 1.1.2_@babel+core@7.19.3
   '@glimmer/tracking': 1.1.2
   '@glint/core': 0.8.3
-  '@glint/environment-ember-loose': 0.8.3_furjb7i5br6xqz7baansbikihy
+  '@glint/environment-ember-loose': 0.8.3_q3dyqagzoarn5fdnpc2fuow56q
   '@tailwindcss/typography': 0.5.8_tailwindcss@3.2.4
   '@tsconfig/ember': 1.0.1
   '@turf/helpers': 6.5.0
   '@turf/projection': 6.5.0
   '@turf/turf': 6.5.0
+  '@types/d3': 7.4.0
+  '@types/d3-axis': 3.0.2
+  '@types/d3-scale': 4.0.3
+  '@types/d3-selection': 3.0.4
   '@types/ember': 4.0.1_@babel+core@7.19.3
   '@types/ember-data': 4.4.4_@babel+core@7.19.3
   '@types/ember-data__adapter': 4.0.0_@babel+core@7.19.3
@@ -168,7 +176,7 @@ devDependencies:
   ember-inflector: 4.0.2
   ember-leaflet: 5.0.2_iljabqbcc7mih2iojcitod7vpq
   ember-load-initializers: 2.1.2_@babel+core@7.19.3
-  ember-modifier: 4.0.0_ember-source@4.7.0
+  ember-modifier: 3.2.7_@babel+core@7.19.3
   ember-page-title: 7.0.0
   ember-qunit: 5.1.5_m2vpijm5kklvqmlfibufmotnbi
   ember-resolver: 8.0.3_@babel+core@7.19.3
@@ -2321,17 +2329,6 @@ packages:
       semver: 7.3.8
     dev: true
 
-  /@embroider/addon-shim/1.8.4:
-    resolution: {integrity: sha512-sFhfWC0vI18KxVenmswQ/ShIvBg4juL8ubI+Q3NTSdkCTeaPQ/DIOUF6oR5DCQ8eO/TkIaw+kdG3FkTY6yNJqA==}
-    engines: {node: 12.* || 14.* || >= 16}
-    dependencies:
-      '@embroider/shared-internals': 2.0.0
-      broccoli-funnel: 3.0.8
-      semver: 7.3.8
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /@embroider/babel-loader-8/1.8.3_omufzdyusrmquceqjtzym5b3nu:
     resolution: {integrity: sha512-hi+MnBE4TBSOepD7svzr7BVho8jiq2ljplvztE5VinqxoXGeGlk/9VRih0B4VFnZQk4loC6DZqC4BYTlxYh2gA==}
     engines: {node: 12.* || 14.* || >= 16}
@@ -2556,20 +2553,6 @@ packages:
 
   /@embroider/shared-internals/1.8.3:
     resolution: {integrity: sha512-N5Gho6Qk8z5u+mxLCcMYAoQMbN4MmH+z2jXwQHVs859bxuZTxwF6kKtsybDAASCtd2YGxEmzcc1Ja/wM28824w==}
-    engines: {node: 12.* || 14.* || >= 16}
-    dependencies:
-      babel-import-util: 1.2.2
-      ember-rfc176-data: 0.3.17
-      fs-extra: 9.1.0
-      js-string-escape: 1.0.1
-      lodash: 4.17.21
-      resolve-package-path: 4.0.3
-      semver: 7.3.8
-      typescript-memoize: 1.1.1
-    dev: true
-
-  /@embroider/shared-internals/2.0.0:
-    resolution: {integrity: sha512-qZ2/xky9mWm5YC6noOa6AiAwgISEQ78YTZNv4SNu2PFgEK/H+Ha/3ddngzGSsnXkVnIHZyxIBzhxETonQYHY9g==}
     engines: {node: 12.* || 14.* || >= 16}
     dependencies:
       babel-import-util: 1.2.2
@@ -2875,7 +2858,7 @@ packages:
       - supports-color
     dev: true
 
-  /@glint/environment-ember-loose/0.8.3_furjb7i5br6xqz7baansbikihy:
+  /@glint/environment-ember-loose/0.8.3_q3dyqagzoarn5fdnpc2fuow56q:
     resolution: {integrity: sha512-I6ft4N0hSsUi26rG81gNGQ23wRLMWgUPthq1XYtHJJG64Bw92NP80UVoL2CoA2/QHPxqu4dV5ZiXhtbdaUlqbA==}
     peerDependencies:
       '@glimmer/component': ^1.1.2
@@ -2891,7 +2874,7 @@ packages:
       '@glint/config': 0.8.3
       '@glint/template': 0.8.3_@glimmer+component@1.1.2
       ember-cli-htmlbars: 6.1.1
-      ember-modifier: 4.0.0_ember-source@4.7.0
+      ember-modifier: 3.2.7_@babel+core@7.19.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -4141,6 +4124,185 @@ packages:
 
   /@types/cors/2.8.12:
     resolution: {integrity: sha512-vt+kDhq/M2ayberEtJcIN/hxXy1Pk+59g2FV/ZQceeaTyCtCucjL2Q7FXlFjtWn4n15KCr1NE2lNNFhp0lEThw==}
+    dev: true
+
+  /@types/d3-array/3.0.4:
+    resolution: {integrity: sha512-nwvEkG9vYOc0Ic7G7kwgviY4AQlTfYGIZ0fqB7CQHXGyYM6nO7kJh5EguSNA3jfh4rq7Sb7eMVq8isuvg2/miQ==}
+    dev: true
+
+  /@types/d3-axis/3.0.2:
+    resolution: {integrity: sha512-uGC7DBh0TZrU/LY43Fd8Qr+2ja1FKmH07q2FoZFHo1eYl8aj87GhfVoY1saJVJiq24rp1+wpI6BvQJMKgQm8oA==}
+    dependencies:
+      '@types/d3-selection': 3.0.4
+    dev: true
+
+  /@types/d3-brush/3.0.2:
+    resolution: {integrity: sha512-2TEm8KzUG3N7z0TrSKPmbxByBx54M+S9lHoP2J55QuLU0VSQ9mE96EJSAOVNEqd1bbynMjeTS9VHmz8/bSw8rA==}
+    dependencies:
+      '@types/d3-selection': 3.0.4
+    dev: true
+
+  /@types/d3-chord/3.0.2:
+    resolution: {integrity: sha512-abT/iLHD3sGZwqMTX1TYCMEulr+wBd0SzyOQnjYNLp7sngdOHYtNkMRI5v3w5thoN+BWtlHVDx2Osvq6fxhZWw==}
+    dev: true
+
+  /@types/d3-color/3.1.0:
+    resolution: {integrity: sha512-HKuicPHJuvPgCD+np6Se9MQvS6OCbJmOjGvylzMJRlDwUXjKTTXs6Pwgk79O09Vj/ho3u1ofXnhFOaEWWPrlwA==}
+    dev: true
+
+  /@types/d3-contour/3.0.2:
+    resolution: {integrity: sha512-k6/bGDoAGJZnZWaKzeB+9glgXCYGvh6YlluxzBREiVo8f/X2vpTEdgPy9DN7Z2i42PZOZ4JDhVdlTSTSkLDPlQ==}
+    dependencies:
+      '@types/d3-array': 3.0.4
+      '@types/geojson': 7946.0.8
+    dev: true
+
+  /@types/d3-delaunay/6.0.1:
+    resolution: {integrity: sha512-tLxQ2sfT0p6sxdG75c6f/ekqxjyYR0+LwPrsO1mbC9YDBzPJhs2HbJJRrn8Ez1DBoHRo2yx7YEATI+8V1nGMnQ==}
+    dev: true
+
+  /@types/d3-dispatch/3.0.2:
+    resolution: {integrity: sha512-rxN6sHUXEZYCKV05MEh4z4WpPSqIw+aP7n9ZN6WYAAvZoEAghEK1WeVZMZcHRBwyaKflU43PCUAJNjFxCzPDjg==}
+    dev: true
+
+  /@types/d3-drag/3.0.2:
+    resolution: {integrity: sha512-qmODKEDvyKWVHcWWCOVcuVcOwikLVsyc4q4EBJMREsoQnR2Qoc2cZQUyFUPgO9q4S3qdSqJKBsuefv+h0Qy+tw==}
+    dependencies:
+      '@types/d3-selection': 3.0.4
+    dev: true
+
+  /@types/d3-dsv/3.0.1:
+    resolution: {integrity: sha512-76pBHCMTvPLt44wFOieouXcGXWOF0AJCceUvaFkxSZEu4VDUdv93JfpMa6VGNFs01FHfuP4a5Ou68eRG1KBfTw==}
+    dev: true
+
+  /@types/d3-ease/3.0.0:
+    resolution: {integrity: sha512-aMo4eaAOijJjA6uU+GIeW018dvy9+oH5Y2VPPzjjfxevvGQ/oRDs+tfYC9b50Q4BygRR8yE2QCLsrT0WtAVseA==}
+    dev: true
+
+  /@types/d3-fetch/3.0.2:
+    resolution: {integrity: sha512-gllwYWozWfbep16N9fByNBDTkJW/SyhH6SGRlXloR7WdtAaBui4plTP+gbUgiEot7vGw/ZZop1yDZlgXXSuzjA==}
+    dependencies:
+      '@types/d3-dsv': 3.0.1
+    dev: true
+
+  /@types/d3-force/3.0.4:
+    resolution: {integrity: sha512-q7xbVLrWcXvSBBEoadowIUJ7sRpS1yvgMWnzHJggFy5cUZBq2HZL5k/pBSm0GdYWS1vs5/EDwMjSKF55PDY4Aw==}
+    dev: true
+
+  /@types/d3-format/3.0.1:
+    resolution: {integrity: sha512-5KY70ifCCzorkLuIkDe0Z9YTf9RR2CjBX1iaJG+rgM/cPP+sO+q9YdQ9WdhQcgPj1EQiJ2/0+yUkkziTG6Lubg==}
+    dev: true
+
+  /@types/d3-geo/3.0.3:
+    resolution: {integrity: sha512-bK9uZJS3vuDCNeeXQ4z3u0E7OeJZXjUgzFdSOtNtMCJCLvDtWDwfpRVWlyt3y8EvRzI0ccOu9xlMVirawolSCw==}
+    dependencies:
+      '@types/geojson': 7946.0.8
+    dev: true
+
+  /@types/d3-hierarchy/3.1.2:
+    resolution: {integrity: sha512-9hjRTVoZjRFR6xo8igAJyNXQyPX6Aq++Nhb5ebrUF414dv4jr2MitM2fWiOY475wa3Za7TOS2Gh9fmqEhLTt0A==}
+    dev: true
+
+  /@types/d3-interpolate/3.0.1:
+    resolution: {integrity: sha512-jx5leotSeac3jr0RePOH1KdR9rISG91QIE4Q2PYTu4OymLTZfA3SrnURSLzKH48HmXVUru50b8nje4E79oQSQw==}
+    dependencies:
+      '@types/d3-color': 3.1.0
+    dev: true
+
+  /@types/d3-path/3.0.0:
+    resolution: {integrity: sha512-0g/A+mZXgFkQxN3HniRDbXMN79K3CdTpLsevj+PXiTcb2hVyvkZUBg37StmgCQkaD84cUJ4uaDAWq7UJOQy2Tg==}
+    dev: true
+
+  /@types/d3-polygon/3.0.0:
+    resolution: {integrity: sha512-D49z4DyzTKXM0sGKVqiTDTYr+DHg/uxsiWDAkNrwXYuiZVd9o9wXZIo+YsHkifOiyBkmSWlEngHCQme54/hnHw==}
+    dev: true
+
+  /@types/d3-quadtree/3.0.2:
+    resolution: {integrity: sha512-QNcK8Jguvc8lU+4OfeNx+qnVy7c0VrDJ+CCVFS9srBo2GL9Y18CnIxBdTF3v38flrGy5s1YggcoAiu6s4fLQIw==}
+    dev: true
+
+  /@types/d3-random/3.0.1:
+    resolution: {integrity: sha512-IIE6YTekGczpLYo/HehAy3JGF1ty7+usI97LqraNa8IiDur+L44d0VOjAvFQWJVdZOJHukUJw+ZdZBlgeUsHOQ==}
+    dev: true
+
+  /@types/d3-scale-chromatic/3.0.0:
+    resolution: {integrity: sha512-dsoJGEIShosKVRBZB0Vo3C8nqSDqVGujJU6tPznsBJxNJNwMF8utmS83nvCBKQYPpjCzaaHcrf66iTRpZosLPw==}
+    dev: true
+
+  /@types/d3-scale/4.0.3:
+    resolution: {integrity: sha512-PATBiMCpvHJSMtZAMEhc2WyL+hnzarKzI6wAHYjhsonjWJYGq5BXTzQjv4l8m2jO183/4wZ90rKvSeT7o72xNQ==}
+    dependencies:
+      '@types/d3-time': 3.0.0
+    dev: true
+
+  /@types/d3-selection/3.0.4:
+    resolution: {integrity: sha512-ZeykX7286BCyMg9sH5fIAORyCB6hcATPSRQpN47jwBA2bMbAT0s+EvtDP5r1FZYJ95R8QoEE1CKJX+n0/M5Vhg==}
+    dev: true
+
+  /@types/d3-shape/3.1.1:
+    resolution: {integrity: sha512-6Uh86YFF7LGg4PQkuO2oG6EMBRLuW9cbavUW46zkIO5kuS2PfTqo2o9SkgtQzguBHbLgNnU90UNsITpsX1My+A==}
+    dependencies:
+      '@types/d3-path': 3.0.0
+    dev: true
+
+  /@types/d3-time-format/4.0.0:
+    resolution: {integrity: sha512-yjfBUe6DJBsDin2BMIulhSHmr5qNR5Pxs17+oW4DoVPyVIXZ+m6bs7j1UVKP08Emv6jRmYrYqxYzO63mQxy1rw==}
+    dev: true
+
+  /@types/d3-time/3.0.0:
+    resolution: {integrity: sha512-sZLCdHvBUcNby1cB6Fd3ZBrABbjz3v1Vm90nysCQ6Vt7vd6e/h9Lt7SiJUoEX0l4Dzc7P5llKyhqSi1ycSf1Hg==}
+    dev: true
+
+  /@types/d3-timer/3.0.0:
+    resolution: {integrity: sha512-HNB/9GHqu7Fo8AQiugyJbv6ZxYz58wef0esl4Mv828w1ZKpAshw/uFWVDUcIB9KKFeFKoxS3cHY07FFgtTRZ1g==}
+    dev: true
+
+  /@types/d3-transition/3.0.3:
+    resolution: {integrity: sha512-/S90Od8Id1wgQNvIA8iFv9jRhCiZcGhPd2qX0bKF/PS+y0W5CrXKgIiELd2CvG1mlQrWK/qlYh3VxicqG1ZvgA==}
+    dependencies:
+      '@types/d3-selection': 3.0.4
+    dev: true
+
+  /@types/d3-zoom/3.0.2:
+    resolution: {integrity: sha512-t09DDJVBI6AkM7N8kuPsnq/3d/ehtRKBN1xSiYjjMCgbiw6HM6Ged5VhvswmhprfKyGvzeTEL/4WBaK9llWvlA==}
+    dependencies:
+      '@types/d3-interpolate': 3.0.1
+      '@types/d3-selection': 3.0.4
+    dev: true
+
+  /@types/d3/7.4.0:
+    resolution: {integrity: sha512-jIfNVK0ZlxcuRDKtRS/SypEyOQ6UHaFQBKv032X45VvxSJ6Yi5G9behy9h6tNTHTDGh5Vq+KbmBjUWLgY4meCA==}
+    dependencies:
+      '@types/d3-array': 3.0.4
+      '@types/d3-axis': 3.0.2
+      '@types/d3-brush': 3.0.2
+      '@types/d3-chord': 3.0.2
+      '@types/d3-color': 3.1.0
+      '@types/d3-contour': 3.0.2
+      '@types/d3-delaunay': 6.0.1
+      '@types/d3-dispatch': 3.0.2
+      '@types/d3-drag': 3.0.2
+      '@types/d3-dsv': 3.0.1
+      '@types/d3-ease': 3.0.0
+      '@types/d3-fetch': 3.0.2
+      '@types/d3-force': 3.0.4
+      '@types/d3-format': 3.0.1
+      '@types/d3-geo': 3.0.3
+      '@types/d3-hierarchy': 3.1.2
+      '@types/d3-interpolate': 3.0.1
+      '@types/d3-path': 3.0.0
+      '@types/d3-polygon': 3.0.0
+      '@types/d3-quadtree': 3.0.2
+      '@types/d3-random': 3.0.1
+      '@types/d3-scale': 4.0.3
+      '@types/d3-scale-chromatic': 3.0.0
+      '@types/d3-selection': 3.0.4
+      '@types/d3-shape': 3.1.1
+      '@types/d3-time': 3.0.0
+      '@types/d3-time-format': 4.0.0
+      '@types/d3-timer': 3.0.0
+      '@types/d3-transition': 3.0.3
+      '@types/d3-zoom': 3.0.2
     dev: true
 
   /@types/ember-data/4.4.4_@babel+core@7.19.3:
@@ -9438,20 +9600,17 @@ packages:
       - supports-color
     dev: true
 
-  /ember-modifier/4.0.0_ember-source@4.7.0:
-    resolution: {integrity: sha512-OdconmrqKP2haK4kBwNmtnA2NiC2MFmIJC3LgJ1WhwZ49GaktM+bRIuFxF/S5W0oaegzKs1qH2ZDlqMeO2L3nw==}
-    engines: {node: 14.* || 16.* || >= 18}
-    peerDependencies:
-      ember-source: '*'
-    peerDependenciesMeta:
-      ember-source:
-        optional: true
+  /ember-modifier/3.2.7_@babel+core@7.19.3:
+    resolution: {integrity: sha512-ezcPQhH8jUfcJQbbHji4/ZG/h0yyj1jRDknfYue/ypQS8fM8LrGcCMo0rjDZLzL1Vd11InjNs3BD7BdxFlzGoA==}
+    engines: {node: 12.* || >= 14}
     dependencies:
-      '@embroider/addon-shim': 1.8.4
+      ember-cli-babel: 7.26.11
       ember-cli-normalize-entity-name: 1.0.0
       ember-cli-string-utils: 1.1.0
-      ember-source: 4.7.0_wfdvla2jorjoj23kkavho2upde
+      ember-cli-typescript: 5.1.1
+      ember-compatibility-helpers: 1.2.6_@babel+core@7.19.3
     transitivePeerDependencies:
+      - '@babel/core'
       - supports-color
     dev: true
 
