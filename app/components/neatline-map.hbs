@@ -2,7 +2,7 @@
   @lat={{this.lat}} 
   @lng={{this.lng}} 
   @zoom={{this.zoom}} 
-  class="h-96 w-3/4" as |layers|>
+  class="h-[calc(100vh-9rem)] w-3/4" as |layers|>
   <layers.tile @url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"/>
   {{#each this.points as |point|}}
       {{#let (convert-coordinates point.coverage) as |coordinates|}}

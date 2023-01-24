@@ -3,8 +3,6 @@ import { service } from "@ember/service";
 import Store from "@ember-data/store";
 import NeatlineRecord from "emb-line/models/neatline-record";
 
-type NeatlinePoint = NeatlineRecord;
-
 interface NeatlineMapComponentSignature {
   Args: {
     records: NeatlineRecord[];
@@ -28,6 +26,9 @@ export default class NeatlineMapComponent extends Component<NeatlineMapComponent
   }
 
   get points() {
+    console.log(
+      this.args.records.filter(record => !record.coverage).map(r => r.id)
+    );
     return this.args.records.filter(record => record.coverage);
   }
 }

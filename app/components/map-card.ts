@@ -11,4 +11,9 @@ export default class MapCardComponent extends Component<MapCardComponentSignatur
   get item() {
     return this.args.point.item;
   }
+
+  get DCdescription() {
+    const item = this.item;
+    return item.elementTexts.DCdescription;
+  }
 }

@@ -1,5 +1,10 @@
-<h3>
-  {{this.item.elementTexts.DCtitle}}
-</h3>
+<div class="min-w-[300px]">
+  <h3 class="text-2xl font-bold">
+    {{this.item.elementTexts.DCtitle}}
+  </h3>
 
-<p>{{this.item.elementTexts.DCdescription}}</p>
+  <div class="overflow-y-auto w-full h-[20rem]">
+    {{markdown-to-html this.item.elementTexts.DCdescription}}
+  </div>
+</div>
+
