@@ -89,6 +89,7 @@
     "ember-cli-terser": "^4.0.2",
     "ember-cli-typescript": "^5.1.1",
     "ember-cli-typescript-blueprints": "muziejus/ember-cli-typescript-blueprints#ember-4-update",
+    "ember-css-transitions": "^4.3.2",
     "ember-data": "4.7.2",
     "ember-fetch": "^8.1.2",
     "ember-inflector": "^4.0.2",
