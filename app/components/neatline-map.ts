@@ -26,9 +26,6 @@ export default class NeatlineMapComponent extends Component<NeatlineMapComponent
   }
 
   get points() {
-    console.log(
-      this.args.records.filter(record => !record.coverage).map(r => r.id)
-    );
     return this.args.records.filter(record => record.coverage);
   }
 }

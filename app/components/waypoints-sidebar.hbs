@@ -1,0 +1,9 @@
+<div class="overflow-y-auto p-4" ...attributes>
+  <h2 class="text-3xl font-bold">Waypoints</h2>
+
+  <ul class="py-4">
+    {{#each @records as |record|}}
+      <Waypoint @record={{record}} />
+    {{/each}}
+  </ul>
+</div>

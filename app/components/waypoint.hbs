@@ -1,0 +1,27 @@
+{{#if @record.coverage}}
+  <li class="w-full flex flex-col">  
+    <Disclosure as |disclosure|>
+      <disclosure.Button data-test-list-item-map-button={{@record.id}}
+        class="h-full px-2 space-x-2 hover:shadow text-left 
+        text-xl font-bold
+        bg-white">
+        • {{this.item.elementTexts.DCtitle}}
+      </disclosure.Button>
+      <disclosure.Panel
+        class="border-t-primary border-t-2 
+        py-2 px-4
+        w-full bg-gray-100" 
+          {{css-transition
+            enterClass="opacity-0, max-h-0"
+            enterActiveClass="transition-all duration-500 ease-in-out"
+            enterToClass="opacity-100 max-h-60"
+            leaveClass="opacity-100 max-h-60"
+            leaveActiveClass="transition-all duration-500 ease-in-out"
+            leaveToClass="opacity-100 max-h-0"
+          }}
+        >
+        {{markdown-to-html this.item.elementTexts.DCdescription}}
+      </disclosure.Panel>
+    </Disclosure>
+  </li>
+{{/if}}
