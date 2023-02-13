@@ -24,8 +24,4 @@ export default class NeatlineMapComponent extends Component<NeatlineMapComponent
   get lng() {
     return this.args.lng ?? -73;
   }
-
-  get points() {
-    return this.args.records.filter(record => record.coverage);
-  }
 }

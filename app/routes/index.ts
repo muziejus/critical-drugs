@@ -88,6 +88,7 @@ export default class Index extends Route {
   @service declare store: Store;
 
   async model() {
-    return this.store.findAll("neatline-record");
+    const records = await this.store.findAll("neatline-record");
+    return records.filter(record => record.coverage);
   }
 }

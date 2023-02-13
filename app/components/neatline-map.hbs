@@ -5,7 +5,7 @@
   ...attributes
    as |layers|>
   <layers.tile @url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"/>
-  {{#each this.points as |point|}}
+  {{#each @records as |point|}}
       {{#let (convert-coordinates point.coverage) as |coordinates|}}
       <layers.marker @lat={{coordinates.latitude}}
         @lng={{coordinates.longitude}}
