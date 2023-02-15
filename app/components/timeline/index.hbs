@@ -1,7 +1,10 @@
-<div class="w-full timeline">
-  {{this.defaultYear}} is the default year.
+<div class="w-full timeline"
+  {{on-resize this.calculateTimelineSvgSize}} >
   <svg class="timeline-svg w-full">
-    <Timeline::Scale @scale={{this.scale}} transform="translate(30, 30)"/>
+    <Timeline::Scale @scale={{this.scale}} 
+      transform={{concat "translate(" this.margins.left "," (sub this.svgHeight this.margins.bottom) ")"}}
+
+    margins={{this.margins}}/>
   </svg>
 </div>
 

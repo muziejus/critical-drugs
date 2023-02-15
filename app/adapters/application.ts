@@ -37,7 +37,6 @@ export default class ApplicationAdapter extends RESTAdapter {
 
   async findRecord(store: Store, schema: ModelSchema, queryId: string, snapshot: Snapshot) {
     const payload = await super.findRecord(store, schema, queryId, snapshot);
-    console.log(payload);
     const { id, ...attributes } = payload;
     if (attributes.element_texts) {
       attributes.element_texts = this.formatElementTexts(attributes.element_texts);
@@ -49,7 +48,6 @@ export default class ApplicationAdapter extends RESTAdapter {
         attributes
       }
     }
-    console.log(out);
     return out;
   }
 
@@ -65,7 +63,6 @@ export default class ApplicationAdapter extends RESTAdapter {
       sinceToken,
       snapshotRecordArray
     );
-    console.log("payloadd", payload);
     const out = {
       data: payload.map(item => {
         const { id, ...attributes } = item;
@@ -84,7 +81,6 @@ export default class ApplicationAdapter extends RESTAdapter {
         };
       }),
     };
-    console.log("out", out);
     return out;
   }
 
