@@ -34,7 +34,7 @@
                       (this.scale record.numAfterDate)}}
                     height={{elementHeight}}
                     x=0
-                    y=0
+                    y={{div elementHeight -2}}
                     />
         
 
@@ -43,10 +43,11 @@
                   r={{div elementHeight 2}}
                   class="timeline-marker {{record.itemTitle}}"
                   cx=0
-                  cy={{div elementHeight 2}}
+                  cy=0
                   />
                   <text
-                    y=0
+                    style="font-size: .75rem;"
+                    y={{div elementHeight 2}}
                     x={{elementHeight}}>
                       {{record.itemTitle}}
                   </text>
@@ -58,7 +59,7 @@
 
       <Timeline::Scale @scale={{this.scale}} 
         @ticks={{this.ticks}}
-        transform={{concat "translate(" this.margins.left "," (sub this.svgHeight this.margins.bottom) ")"}}
+        transform={{concat "translate(" this.margins.left "," (sub this.svgHeight 20) ")"}}
 
       margins={{this.margins}}/>
     </g>

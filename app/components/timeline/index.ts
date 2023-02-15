@@ -23,13 +23,13 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
 
   margins = {
     top: 10,
-    left: 10,
-    right: 10,
+    left: 15,
+    right: 15,
     bottom: 30,
   };
 
   @action calculateTimelineSvgSize({ contentRect }) {
-    this.svgWidth = contentRect.width * 10;
+    this.svgWidth = contentRect.width * 6;
     this.svgHeight = contentRect.height;
   }
 
@@ -59,8 +59,8 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
 
   get scale() {
     return scaleLinear()
-      .domain([this.defaultYear - 2, 2023])
-      .range([0, this.svgWidth]);
+      .domain([this.defaultYear, new Date().getFullYear()])
+      .range([0, this.svgWidth - this.margins.left - this.margins.right]);
   }
 
   get bandScale() {
