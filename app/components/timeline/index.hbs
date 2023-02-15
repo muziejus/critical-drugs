@@ -1,41 +1,61 @@
-<div class="w-full timeline"
+<div class="overflow-x-auto w-full timeline"
   {{on-resize this.calculateTimelineSvgSize}} >
-  <svg class="timeline-svg w-full">
-    <g class="timeline-entries">
-      {{#let (div
-        (sub this.svgHeight 
-          (add this.margins.top this.margins.bottom)
-        )
-        8
-        ) as |elementHeight|}}
-        {{#each this.records as |record index|}}
-          {{#if record.numBeforeDate}}
-            <rect 
-              width={{sub (this.scale record.numBeforeDate)
-                (this.scale record.numAfterDate)}}
-              height={{elementHeight}}
-              x={{this.scale record.numAfterDate}}
-              y={{add this.margins.top (this.bandScale (mod index 5))}}
-              transform={{concat "translate(0, -" (div elementHeight 2) ")"}}
-              />
-  
+  <svg class="timeline-svg w-full panable"
+    {{pan}}
+  >
+    <g class="panable">
+      <g class="timeline-entries">
+        {{#let (div
+          (sub this.svgHeight 
+            (add this.margins.top this.margins.bottom)
+          )
+          12
+          ) as |elementHeight|}}
+          {{#each this.records as |record index|}}
+            <g class="timeline-entry"
+              transform={{concat 
+                "translate(" 
+                (this.scale record.numAfterDate)
+                ", "
+                (add this.margins.top (this.bandScale (mod index 8)))
+                ")"
+                }}
+                >
+                {{#if record.numBeforeDate}}
+                  <rect 
+                    class="timeline-marker {{record.itemTitle}}"
+                    width={{sub (this.scale record.numBeforeDate)
+                      (this.scale record.numAfterDate)}}
+                    height={{elementHeight}}
+                    x=0
+                    y=0
+                    />
+        
 
-          {{else}}
-          <circle r={{div elementHeight 2}}
-            class={{record.itemTitle}}
-            cx={{this.scale record.numAfterDate}}
-            cy={{add this.margins.top (this.bandScale (mod index 5))}}
-            />
-          {{/if}}
+                {{else}}
+                <circle 
+                  r={{div elementHeight 2}}
+                  class="timeline-marker {{record.itemTitle}}"
+                  cx=0
+                  cy=0
+                  />
+                  <text
+                    y=0
+                    x={{elementHeight}}>
+                      {{record.itemTitle}}
+                  </text>
+                {{/if}}
+            </g>
+          {{/each}}
+        {{/let}}
+      </g>
 
-        {{/each}}
-      {{/let}}
+      <Timeline::Scale @scale={{this.scale}} 
+        @ticks={{this.ticks}}
+        transform={{concat "translate(" this.margins.left "," (sub this.svgHeight this.margins.bottom) ")"}}
+
+      margins={{this.margins}}/>
     </g>
-
-    <Timeline::Scale @scale={{this.scale}} 
-      transform={{concat "translate(" this.margins.left "," (sub this.svgHeight this.margins.bottom) ")"}}
-
-    margins={{this.margins}}/>
   </svg>
 </div>
 

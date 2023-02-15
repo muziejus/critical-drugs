@@ -1,6 +1,6 @@
 import Component from "@glimmer/component";
 import NeatlineRecord from "emb-line/models/neatline-record";
-import { scaleLinear, scaleBand } from "d3-scale";
+import { scaleLinear, scaleBand } from "d3";
 import { action } from "@ember/object";
 import { tracked } from "@glimmer/tracking";
 
@@ -29,7 +29,7 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
   };
 
   @action calculateTimelineSvgSize({ contentRect }) {
-    this.svgWidth = contentRect.width;
+    this.svgWidth = contentRect.width * 10;
     this.svgHeight = contentRect.height;
   }
 
@@ -65,8 +65,13 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
 
   get bandScale() {
     return scaleBand()
-      .domain([0, 1, 2, 3, 4])
+      .domain([0, 1, 2, 3, 4, 5, 6, 7])
       .range([this.margins.top, this.svgHeight - this.margins.bottom])
       .padding(0.1);
+  }
+
+  get ticks() {
+    const year = new Date().getFullYear();
+    return year - this.defaultYear;
   }
 }

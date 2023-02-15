@@ -2,3 +2,55 @@
 @tailwind components;
 @tailwind utilities;
 
+.timeline-marker {
+  opacity: 0.3;
+  fill: #a91e21;
+  stroke: #333333;
+  stroke-opacity: 0.8;
+}
+
+.tooltip {
+  @apply bg-green-800 text-sm py-2 px-4 rounded-lg text-slate-50 shadow-lg;
+}
+
+.thesaurus-tooltip {
+  @apply w-3/4;
+}
+
+.tooltip[data-show] {
+  display: block;
+}
+
+.arrow,
+.arrow::before {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+}
+
+.arrow {
+  visibility: hidden;
+}
+
+.arrow::before {
+  visibility: visible;
+  content: "";
+  transform: rotate(45deg);
+}
+
+.tooltip[data-popper-placement^="top"] > .arrow {
+  bottom: -4px;
+}
+
+.tooltip[data-popper-placement^="bottom"] > .arrow {
+  top: -4px;
+}
+
+.tooltip[data-popper-placement^="left"] > .arrow {
+  right: -4px;
+}
+
+.tooltip[data-popper-placement^="right"] > .arrow {
+  left: -4px;
+}

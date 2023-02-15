@@ -42,9 +42,6 @@
     "@turf/projection": "^6.5.0",
     "@turf/turf": "^6.5.0",
     "@types/d3": "^7.4.0",
-    "@types/d3-axis": "^3.0.1",
-    "@types/d3-scale": "^4.0.2",
-    "@types/d3-selection": "^3.0.3",
     "@types/ember": "^4.0.1",
     "@types/ember-data": "^4.4.4",
     "@types/ember-data__adapter": "^4.0.0",
@@ -100,6 +97,7 @@
     "ember-modifier": "3.2.7",
     "ember-on-resize-modifier": "^1.1.0",
     "ember-page-title": "^7.0.0",
+    "ember-popperjs": "^3.0.0",
     "ember-qunit": "^5.1.5",
     "ember-resolver": "^8.0.3",
     "ember-source": "~4.7.0",
@@ -133,10 +131,7 @@
     "edition": "octane"
   },
   "dependencies": {
-    "@types/d3-format": "^3.0.1",
-    "d3-axis": "^3.0.0",
-    "d3-format": "^3.1.0",
-    "d3-scale": "^4.0.2",
-    "d3-selection": "^3.0.0"
+    "@popperjs/core": "^2.11.6",
+    "d3": "^7.8.2"
   }
 }
