@@ -1,10 +1,16 @@
-<div class="overflow-x-auto w-full timeline"
+<div class="w-full timeline">
+<div class="overflow-x-auto w-full timeline-scroll-container"
   {{on-resize this.calculateTimelineSvgSize}} >
-  <svg class="timeline-svg w-full panable"
-    {{pan}}
-  >
+  <svg class="timeline-svg panable cursor-ew-resize" width={{this.svgWidth}} >
     <g class="panable">
-      <g class="timeline-entries">
+      <g class="timeline-entries"
+        transform={{concat
+        "translate(" 
+        this.margins.left
+        ", "
+        this.margins.top
+        ")"
+        }}>
         {{#let (div
           (sub this.svgHeight 
             (add this.margins.top this.margins.bottom)
@@ -17,7 +23,7 @@
                 "translate(" 
                 (this.scale record.numAfterDate)
                 ", "
-                (add this.margins.top (this.bandScale (mod index 8)))
+                (this.bandScale (mod index 8))
                 ")"
                 }}
                 >
@@ -37,7 +43,7 @@
                   r={{div elementHeight 2}}
                   class="timeline-marker {{record.itemTitle}}"
                   cx=0
-                  cy=0
+                  cy={{div elementHeight 2}}
                   />
                   <text
                     y=0
@@ -58,4 +64,4 @@
     </g>
   </svg>
 </div>
-
+</div>
