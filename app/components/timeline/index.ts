@@ -1,6 +1,6 @@
 import Component from "@glimmer/component";
 import NeatlineRecord from "emb-line/models/neatline-record";
-import { scaleLinear } from "d3-scale";
+import { scaleLinear, scaleBand } from "d3-scale";
 import { action } from "@ember/object";
 import { tracked } from "@glimmer/tracking";
 
@@ -19,7 +19,7 @@ interface TimelineRecord extends NeatlineRecord {
 export default class TimelineComponent extends Component<TimelineComponentSignature> {
   @tracked svgWidth = 0;
 
-  @tracked svgHeight = 0;
+  @tracked svgHeight = 100;
 
   margins = {
     top: 10,
@@ -39,32 +39,34 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
     }
 
     return this.records.map(record => record.numAfterDate).sort()[0];
+    // return 1969;
   }
 
   get records() {
-    return this.args.records.map(record => {
-      if (record.afterDate) {
-        record.numAfterDate = +record.afterDate;
-      }
-      if (record.beforeDate) {
-        record.numBeforeDate = +record.beforeDate;
-      }
+    return this.args.records
+      .map(record => {
+        if (record.afterDate) {
+          record.numAfterDate = +record.afterDate;
+        }
+        if (record.beforeDate) {
+          record.numBeforeDate = +record.beforeDate;
+        }
 
-      return record as TimelineRecord;
-    });
+        return record as TimelineRecord;
+      })
+      .sort((a, b) => a.numAfterDate - b.numAfterDate);
   }
 
   get scale() {
-    console.log(
-      this.records.map(
-        record => `${record.numAfterDate}–${record.numBeforeDate}`
-      )
-    );
     return scaleLinear()
-      .domain([this.defaultYear, 2023])
-      .nice()
+      .domain([this.defaultYear - 2, 2023])
       .range([0, this.svgWidth]);
   }
 
-  foo = 1;
+  get bandScale() {
+    return scaleBand()
+      .domain([0, 1, 2, 3, 4])
+      .range([this.margins.top, this.svgHeight - this.margins.bottom])
+      .padding(0.1);
+  }
 }

@@ -1,6 +1,37 @@
 <div class="w-full timeline"
   {{on-resize this.calculateTimelineSvgSize}} >
   <svg class="timeline-svg w-full">
+    <g class="timeline-entries">
+      {{#let (div
+        (sub this.svgHeight 
+          (add this.margins.top this.margins.bottom)
+        )
+        8
+        ) as |elementHeight|}}
+        {{#each this.records as |record index|}}
+          {{#if record.numBeforeDate}}
+            <rect 
+              width={{sub (this.scale record.numBeforeDate)
+                (this.scale record.numAfterDate)}}
+              height={{elementHeight}}
+              x={{this.scale record.numAfterDate}}
+              y={{add this.margins.top (this.bandScale (mod index 5))}}
+              transform={{concat "translate(0, -" (div elementHeight 2) ")"}}
+              />
+  
+
+          {{else}}
+          <circle r={{div elementHeight 2}}
+            class={{record.itemTitle}}
+            cx={{this.scale record.numAfterDate}}
+            cy={{add this.margins.top (this.bandScale (mod index 5))}}
+            />
+          {{/if}}
+
+        {{/each}}
+      {{/let}}
+    </g>
+
     <Timeline::Scale @scale={{this.scale}} 
       transform={{concat "translate(" this.margins.left "," (sub this.svgHeight this.margins.bottom) ")"}}
 
