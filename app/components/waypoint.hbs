@@ -4,7 +4,8 @@
         class="h-full px-2 space-x-2 hover:shadow text-left 
         text-xl font-bold
         bg-white">
-        • {{this.item.elementTexts.DCtitle}} ({{@record.itemTitle}})
+        • {{@record.itemTitle}} 
+          <span class="font-normal text-base">({{@record.afterDate}}–{{if @record.beforeDate @record.beforeDate "present"}})</span>
       </disclosure.Button>
       <disclosure.Panel
         class="border-t-primary border-t-2 

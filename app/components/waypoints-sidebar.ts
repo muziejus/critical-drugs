@@ -11,4 +11,9 @@ interface WaypointsSidebarComponentSignature {
 
 export default class WaypointsSidebarComponent extends Component<WaypointsSidebarComponentSignature> {
   @service declare neatlineFilter: NeatlineFilter;
+
+  get sortedRecords() {
+    // newest on top.
+    return this.args.records.sort((a, b) => b.afterDate - a.afterDate);
+  }
 }

@@ -34,9 +34,7 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
 
   @action scrollFilter({ target }) {
     const { scrollLeft } = target;
-    this.neatlineFilter.year = Math.floor(
-      this.scrollScale(scrollLeft - this.margins.left)
-    );
+    this.neatlineFilter.year = this.scrollScale(scrollLeft - this.margins.left);
   }
 
   @action calculateTimelineSvgSize({ contentRect }) {
