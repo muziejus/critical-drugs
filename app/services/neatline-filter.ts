@@ -1,9 +1,8 @@
 import Service from "@ember/service";
+import { tracked } from "@glimmer/tracking";
 
-export default class NeatlineFilter extends Service.extend({
-  // anything which *must* be merged to prototype here
-}) {
-  // normal class body definition here
+export default class NeatlineFilter extends Service {
+  @tracked year = 0;
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your services.

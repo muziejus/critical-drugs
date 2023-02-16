@@ -3,6 +3,8 @@ import NeatlineRecord from "emb-line/models/neatline-record";
 import { scaleLinear, scaleBand } from "d3";
 import { action } from "@ember/object";
 import { tracked } from "@glimmer/tracking";
+import { service } from "@ember/service";
+import NeatlineFilter from "emb-line/services/neatline-filter";
 
 interface TimelineComponentSignature {
   Args: {
@@ -21,6 +23,8 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
 
   @tracked svgHeight = 0;
 
+  @service declare neatlineFilter: NeatlineFilter;
+
   margins = {
     top: 10,
     left: 15,
@@ -30,8 +34,7 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
 
   @action scrollFilter({ target }) {
     const { scrollLeft } = target;
-    console.log(
-      "Scrolled to:",
+    this.neatlineFilter.year = Math.floor(
       this.scrollScale(scrollLeft - this.margins.left)
     );
   }

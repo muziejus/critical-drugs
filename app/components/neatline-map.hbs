@@ -7,15 +7,26 @@
   <layers.tile @url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"/>
   {{#each @records as |point|}}
       {{#let (convert-coordinates point.coverage) as |coordinates|}}
-      <layers.circle-marker @lat={{coordinates.latitude}}
-        @lng={{coordinates.longitude}}
-        @title={{point.itemTitle}}
-        @className="timeline-marker"
-        as |marker|>
-          <marker.popup>
-            <MapCard @point={{point}} />
-          </marker.popup>
-        </layers.circle-marker>
+        {{#if (or
+          (and 
+            (lte point.afterDate this.neatlineFilter.year)
+            (not point.beforeDate)
+          )
+          (and
+            (lte point.afterDate this.neatlineFilter.year)
+            (gte point.beforeDate this.neatlineFilter.year)
+          )
+            )}}
+          <layers.circle-marker @lat={{coordinates.latitude}}
+            @lng={{coordinates.longitude}}
+            @title={{point.itemTitle}}
+            @className="timeline-marker"
+            as |marker|>
+              <marker.popup>
+                <MapCard @point={{point}} />
+              </marker.popup>
+            </layers.circle-marker>
+          {{/if}}
       {{/let}}
   {{/each}}
 

@@ -2,6 +2,7 @@ import Component from "@glimmer/component";
 import { service } from "@ember/service";
 import Store from "@ember-data/store";
 import NeatlineRecord from "emb-line/models/neatline-record";
+import NeatlineFilter from "emb-line/services/neatline-filter";
 
 interface NeatlineMapComponentSignature {
   Args: {
@@ -14,6 +15,8 @@ interface NeatlineMapComponentSignature {
 
 export default class NeatlineMapComponent extends Component<NeatlineMapComponentSignature> {
   @service declare store: Store;
+
+  @service declare neatlineFilter: NeatlineFilter;
 
   get lat() {
     return this.args.lat ?? 39;
