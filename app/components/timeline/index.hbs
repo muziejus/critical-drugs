@@ -1,6 +1,8 @@
 <div class="w-full timeline" ...attributes>
 <div class="overflow-x-auto w-full h-full timeline-scroll-container"
-  {{on-resize this.calculateTimelineSvgSize}} >
+  {{on-resize this.calculateTimelineSvgSize}} 
+  {{on "scroll" this.scrollFilter}}
+  >
   <svg class="timeline-svg panable cursor-ew-resize" width={{this.svgWidth}} height={{this.svgHeight}}>
     <g class="panable">
       <g class="timeline-entries"
@@ -33,7 +35,7 @@
                     width={{sub (this.scale record.numBeforeDate)
                       (this.scale record.numAfterDate)}}
                     height={{elementHeight}}
-                    x=0
+                    x="0"
                     y={{div elementHeight -2}}
                     />
         
@@ -42,8 +44,8 @@
                 <circle 
                   r={{div elementHeight 2}}
                   class="timeline-marker {{record.itemTitle}}"
-                  cx=0
-                  cy=0
+                  cx="0"
+                  cy="0"
                   />
                   <text
                     style="font-size: .75rem;"

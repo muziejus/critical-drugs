@@ -28,6 +28,14 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
     bottom: 30,
   };
 
+  @action scrollFilter({ target }) {
+    const { scrollLeft } = target;
+    console.log(
+      "Scrolled to:",
+      this.scrollScale(scrollLeft - this.margins.left)
+    );
+  }
+
   @action calculateTimelineSvgSize({ contentRect }) {
     this.svgWidth = contentRect.width * 6;
     this.svgHeight = contentRect.height;
@@ -55,6 +63,12 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
         return record as TimelineRecord;
       })
       .sort((a, b) => a.numAfterDate - b.numAfterDate);
+  }
+
+  get scrollScale() {
+    return scaleLinear()
+      .domain([0, this.svgWidth - this.margins.left - this.margins.right])
+      .range([this.defaultYear, new Date().getFullYear()]);
   }
 
   get scale() {

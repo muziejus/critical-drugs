@@ -16,12 +16,12 @@ export default class NeatlineMapComponent extends Component<NeatlineMapComponent
   @service declare store: Store;
 
   get lat() {
-    return this.args.lat ?? 41;
+    return this.args.lat ?? 39;
   }
   get zoom() {
     return this.args.zoom ?? 3;
   }
   get lng() {
-    return this.args.lng ?? -73;
+    return this.args.lng ?? -104;
   }
 }
