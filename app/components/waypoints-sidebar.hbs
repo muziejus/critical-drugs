@@ -1,16 +1,16 @@
 <div class="overflow-y-auto p-4" ...attributes>
-  <h2 class="text-3xl font-bold">Waypoints Filter: {{this.neatlineFilter.year}}</h2>
+  <h2 class="text-3xl font-bold">Waypoints </h2>
 
   <ul class="py-4">
     {{#each this.sortedRecords as |record|}}
       {{#if (or
         (and 
-          (lte record.afterDate this.neatlineFilter.year)
+          (lte record.afterDate this.neatlineFilter.afterYear)
           (not record.beforeDate)
         )
         (and
-          (lte record.afterDate this.neatlineFilter.year)
-          (gte record.beforeDate this.neatlineFilter.year)
+          (lte record.afterDate this.neatlineFilter.afterYear)
+          (gte record.beforeDate this.neatlineFilter.beforeYear)
         )
           )}}
         <Waypoint @record={{record}} />

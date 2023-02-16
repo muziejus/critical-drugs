@@ -9,12 +9,12 @@
       {{#let (convert-coordinates point.coverage) as |coordinates|}}
         {{#if (or
           (and 
-            (lte point.afterDate this.neatlineFilter.year)
+            (lte point.afterDate this.neatlineFilter.afterYear)
             (not point.beforeDate)
           )
           (and
-            (lte point.afterDate this.neatlineFilter.year)
-            (gte point.beforeDate this.neatlineFilter.year)
+            (lte point.afterDate this.neatlineFilter.afterYear)
+            (gte point.beforeDate this.neatlineFilter.beforeYear)
           )
             )}}
           <layers.circle-marker @lat={{coordinates.latitude}}

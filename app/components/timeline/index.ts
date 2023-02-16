@@ -21,6 +21,8 @@ interface TimelineRecord extends NeatlineRecord {
 export default class TimelineComponent extends Component<TimelineComponentSignature> {
   @tracked svgWidth = 0;
 
+  @tracked windowWidth = 0;
+
   @tracked svgHeight = 0;
 
   @service declare neatlineFilter: NeatlineFilter;
@@ -34,10 +36,16 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
 
   @action scrollFilter({ target }) {
     const { scrollLeft } = target;
-    this.neatlineFilter.year = this.scrollScale(scrollLeft - this.margins.left);
+    this.neatlineFilter.beforeYear = this.scrollScale(
+      scrollLeft - this.margins.left
+    );
+    this.neatlineFilter.afterYear = this.scrollScale(
+      scrollLeft - this.margins.left + this.windowWidth
+    );
   }
 
   @action calculateTimelineSvgSize({ contentRect }) {
+    this.windowWidth = contentRect.width;
     this.svgWidth = contentRect.width * 6;
     this.svgHeight = contentRect.height;
   }
