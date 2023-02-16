@@ -1,7 +1,7 @@
-<div class="w-full timeline">
-<div class="overflow-x-auto w-full timeline-scroll-container"
+<div class="w-full timeline" ...attributes>
+<div class="overflow-x-auto w-full h-full timeline-scroll-container"
   {{on-resize this.calculateTimelineSvgSize}} >
-  <svg class="timeline-svg panable cursor-ew-resize" width={{this.svgWidth}} >
+  <svg class="timeline-svg panable cursor-ew-resize" width={{this.svgWidth}} height={{this.svgHeight}}>
     <g class="panable">
       <g class="timeline-entries"
         transform={{concat

@@ -19,7 +19,7 @@ interface TimelineRecord extends NeatlineRecord {
 export default class TimelineComponent extends Component<TimelineComponentSignature> {
   @tracked svgWidth = 0;
 
-  @tracked svgHeight = 100;
+  @tracked svgHeight = 0;
 
   margins = {
     top: 10,
