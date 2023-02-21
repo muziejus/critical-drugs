@@ -23,9 +23,9 @@
             @title={{point.itemTitle}}
             @className="timeline-marker"
             as |marker|>
-              <marker.popup>
-                <MapCard @point={{point}} />
-              </marker.popup>
+              <marker.tooltip>
+                {{point.itemTitle}}
+              </marker.tooltip>
             </layers.circle-marker>
           {{/if}}
       {{/let}}

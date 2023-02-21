@@ -1,11 +1,22 @@
   <li class="w-full flex flex-col">  
     <Disclosure as |disclosure|>
       <disclosure.Button data-test-list-item-map-button={{@record.id}}
-        class="h-full px-2 space-x-2 hover:shadow text-left 
+        class="h-full px-2 space-x-2 hover:bg-slate-200 text-left 
         text-xl font-bold
         bg-white">
-        • {{@record.itemTitle}} 
-          <span class="font-normal text-base">({{@record.afterDate}}–{{if @record.beforeDate @record.beforeDate "present"}})</span>
+        <div class="flex flex-row justify-between">
+          <div class="flex-grow">
+          {{@record.itemTitle}} 
+            <span class="font-normal text-base">({{@record.afterDate}}–{{if @record.beforeDate @record.beforeDate "present"}})</span>
+          </div>
+          <div>
+            {{#if disclosure.isOpen}}
+              {{svg-jar "caret-up" class="w-[1.5rem]"}}
+            {{else}}
+              {{svg-jar "caret-down" class="w-[1.5rem]"}}
+            {{/if}}
+          </div>
+        </div>
       </disclosure.Button>
       <disclosure.Panel
         class="border-t-primary border-t-2 
@@ -20,7 +31,16 @@
             leaveToClass="opacity-100 max-h-0"
           }}
         >
-        {{markdown-to-html this.item.elementTexts.DCdescription}}
+        <div class="prose">
+          {{markdown-to-html this.item.elementTexts.DCdescription}}
+
+          {{log this.item.elementTexts}}
+          <p class="text-right">{{this.item.elementTexts.DCcreator}}</p>
+
+          {{#if this.item.elementTexts.DCrelation}}
+            {{html-safe this.item.elementTexts.DCrelation}}
+          {{/if}}
+        </div>
       </disclosure.Panel>
     </Disclosure>
   </li>
