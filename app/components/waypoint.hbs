@@ -1,5 +1,8 @@
   <li class="w-full flex flex-col">  
-    <Disclosure as |disclosure|>
+    <Disclosure 
+      @close={{this.handleClose}}
+      @isOpen={{this.isOpen}}
+    as |disclosure|>
       <disclosure.Button data-test-list-item-map-button={{@record.id}}
         class="h-full px-2 space-x-2 hover:bg-slate-200 text-left 
         text-xl font-bold
@@ -34,7 +37,6 @@
         <div class="prose">
           {{markdown-to-html this.item.elementTexts.DCdescription}}
 
-          {{log this.item.elementTexts}}
           <p class="text-right">{{this.item.elementTexts.DCcreator}}</p>
 
           {{#if this.item.elementTexts.DCrelation}}

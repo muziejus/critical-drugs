@@ -35,4 +35,10 @@ export default class NeatlineMapComponent extends Component<NeatlineMapComponent
   get lng() {
     return this.args.lng ?? -104;
   }
+
+  @action handleMarkerClick(event) {
+    const { className } = event.target.options;
+    const id = className.split("record-id-")[1];
+    this.neatlineFilter.shownOrganizations.push(id);
+  }
 }

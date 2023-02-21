@@ -21,7 +21,8 @@
           <layers.circle-marker @lat={{coordinates.latitude}}
             @lng={{coordinates.longitude}}
             @title={{point.itemTitle}}
-            @className="timeline-marker"
+            @className={{concat "timeline-marker record-id-" point.id}}
+            @onClick={{this.handleMarkerClick}}
             as |marker|>
               <marker.tooltip>
                 {{point.itemTitle}}
