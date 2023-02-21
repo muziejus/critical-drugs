@@ -47,13 +47,13 @@
                   cx="0"
                   cy="0"
                   />
+                {{/if}}
                   <text
-                    style="font-size: .75rem;"
-                    y={{div elementHeight 2}}
+                    style="font-size: {{mult elementHeight 0.5 }}px;"
+                    y={{sub (div elementHeight 2) (mult elementHeight 0.25)}}
                     x={{elementHeight}}>
                       {{record.itemTitle}}
                   </text>
-                {{/if}}
             </g>
           {{/each}}
         {{/let}}

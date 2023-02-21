@@ -2,7 +2,7 @@ import Service from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 
 export default class NeatlineFilter extends Service {
-  @tracked afterYear = 1971;
+  @tracked afterYear = 1979;
 
   @tracked beforeYear = 0;
 }
