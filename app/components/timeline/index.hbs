@@ -1,5 +1,5 @@
 <div class="w-full timeline" ...attributes>
-<div class="overflow-x-auto w-full h-full timeline-scroll-container bg-white"
+<div class="overflow-x-auto w-full h-full timeline-scroll-container"
   {{on-resize this.calculateTimelineSvgSize}} 
   {{on "scroll" this.scrollFilter}}
   >
@@ -52,7 +52,7 @@
                     style="font-size: {{mult elementHeight 0.5 }}px;"
                     y={{sub (div elementHeight 2) (mult elementHeight 0.25)}}
                     x={{elementHeight}}>
-                      {{record.itemTitle}}
+                      {{if record.title record.title record.itemTitle}}
                   </text>
             </g>
           {{/each}}
