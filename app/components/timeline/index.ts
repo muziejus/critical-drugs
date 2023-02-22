@@ -5,6 +5,7 @@ import { action } from "@ember/object";
 import { tracked } from "@glimmer/tracking";
 import { service } from "@ember/service";
 import NeatlineFilter from "emb-line/services/neatline-filter";
+import NeatlineMap from "emb-line/services/neatline-map";
 
 interface TimelineComponentSignature {
   Args: {
@@ -24,6 +25,8 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
   @tracked windowWidth = 0;
 
   @tracked svgHeight = 0;
+
+  @service declare neatlineMap: NeatlineMap;
 
   @service declare neatlineFilter: NeatlineFilter;
 

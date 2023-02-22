@@ -37,6 +37,16 @@
         <div class="prose">
           <h2>{{this.item.elementTexts.DCtitle}}</h2>
 
+          <div class="flex flex-row justify-end">
+            <button 
+              class="bg-[#a11d21] text-white hover:text-slate-100 hover:shadow-lg rounded px-4"
+              {{on "click" (if this.isZoomed this.recenter this.flyTo)}}>
+              {{if this.isZoomed "Recenter Map" "Zoom to Institution"}}
+            </button>
+          </div>
+
+
+
           {{markdown-to-html this.item.elementTexts.DCdescription}}
 
           <p class="text-right">{{this.item.elementTexts.DCcreator}}</p>

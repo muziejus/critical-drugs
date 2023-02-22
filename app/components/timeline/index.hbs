@@ -20,7 +20,8 @@
           12
           ) as |elementHeight|}}
           {{#each this.records as |record index|}}
-            <g class="timeline-entry"
+            <g class="timeline-entry cursor-pointer"
+              {{on "click" (fn this.neatlineMap.flyTo record.id)}}
               transform={{concat 
                 "translate(" 
                 (this.scale record.numAfterDate)
