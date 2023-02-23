@@ -100,4 +100,17 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
     const year = new Date().getFullYear();
     return year - this.defaultYear;
   }
+
+  get rem() {
+    if (document) {
+      return parseFloat(
+        window
+          .getComputedStyle(document.documentElement)
+          .fontSize.replace("px", ""),
+        10
+      );
+    }
+
+    return 16;
+  }
 }
