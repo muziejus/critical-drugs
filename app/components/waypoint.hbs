@@ -1,5 +1,6 @@
   <li class="w-full flex flex-col">  
     <Disclosure 
+      @open={{this.handleOpen}}
       @close={{this.handleClose}}
       @isOpen={{this.isOpen}}
     as |disclosure|>
@@ -39,8 +40,7 @@
 
           <div class="flex flex-row justify-end">
             <button 
-              class="bg-[#a11d21] text-white hover:text-slate-100 hover:shadow-lg rounded px-4"
-              {{on "click" (if this.isZoomed this.recenter this.flyTo)}}>
+              class="bg-[#a11d21] text-white hover:text-slate-100 hover:shadow-lg rounded px-4" type="button" {{on "click" (if this.isZoomed this.recenter this.flyTo)}}>
               {{if this.isZoomed "Recenter Map" "Zoom to Institution"}}
             </button>
           </div>

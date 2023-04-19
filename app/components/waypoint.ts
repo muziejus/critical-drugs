@@ -5,6 +5,7 @@ import { service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
 import NeatlineFilter from "emb-line/services/neatline-filter";
 import NeatlineMap from "emb-line/services/neatline-map";
+import ActiveInstitutions from "emb-line/services/active-institutions";
 
 interface WaypointComponentSignature {
   Args: {
@@ -17,16 +18,12 @@ export default class WaypointComponent extends Component<WaypointComponentSignat
 
   @service declare neatlineMap: NeatlineMap;
 
+  @service declare activeInstitutions: ActiveInstitutions;
+
   @tracked isZoomed = false;
 
   get isOpen() {
-    console.log("from isopen", this.args.record.id);
-    const inArray =
-      this.neatlineFilter.shownOrganizations.filter(
-        id => id === this.args.record.id
-      ).length > 0;
-    console.log("inarray", inArray);
-    return inArray;
+    return this.activeInstitutions.list.has(this.args.record.id);
   }
 
   get item() {
@@ -47,7 +44,14 @@ export default class WaypointComponent extends Component<WaypointComponentSignat
     this.neatlineMap.recenter();
   }
 
+  @action handleOpen() {
+    this.activeInstitutions.list = this.activeInstitutions.list.add(
+      this.args.record.id
+    );
+  }
+
   @action handleClose() {
-    console.log("handling close");
+    this.activeInstitutions.list.delete(this.args.record.id);
+    this.activeInstitutions.list = this.activeInstitutions.list;
   }
 }
