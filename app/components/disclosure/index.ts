@@ -15,7 +15,11 @@ interface DisclosureComponentBlock {
 
 interface DisclosureComponentSignature {
   Element: HTMLElement;
-  Args: {};
+  Args: {
+    isOpen?: boolean | Promise<boolean>;
+    open?: () => void;
+    close?: () => void;
+  };
   Blocks: {
     default: [disclosure: DisclosureComponentBlock];
   };
@@ -23,7 +27,16 @@ interface DisclosureComponentSignature {
 
 export default class DisclosureComponent extends Component<DisclosureComponentSignature> {
   guid = `${guidFor(this)}-headlessui-disclosure`;
-  @tracked isOpen = false;
+
+  @tracked _isOpen = false;
+
+  get isOpen() {
+    if (this.args.isOpen) {
+      return this.args.isOpen;
+    }
+
+    return this._isOpen;
+  }
 
   @action
   toggle() {
@@ -36,12 +49,20 @@ export default class DisclosureComponent extends Component<DisclosureComponentSi
 
   @action
   open() {
-    this.isOpen = true;
+    if (this.args.open) {
+      return this.args.open();
+    }
+
+    this._isOpen = true;
   }
 
   @action
   close() {
-    this.isOpen = false;
+    if (this.args.close) {
+      return this.args.close();
+    }
+
+    this._isOpen = false;
   }
 
   get panelGuid() {
