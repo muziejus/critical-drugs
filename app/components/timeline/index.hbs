@@ -21,7 +21,7 @@
           ) as |elementHeight|}}
           {{#each this.records as |record index|}}
             <g class="timeline-entry cursor-pointer"
-              {{on "click" (fn this.neatlineMap.flyTo record.id)}}
+              {{on "click" (fn this.handleClick record.id)}}
               transform={{concat 
                 "translate(" 
                 (this.scale record.numAfterDate)
@@ -32,7 +32,7 @@
                 >
                 {{#if record.numBeforeDate}}
                   <rect 
-                    class="timeline-marker {{record.itemTitle}}"
+                    class="timeline-marker {{record.itemTitle}} record-id-{{record.id}}"
                     width={{sub (this.scale record.numBeforeDate)
                       (this.scale record.numAfterDate)}}
                     height={{elementHeight}}

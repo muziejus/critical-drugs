@@ -6,6 +6,7 @@ import { tracked } from "@glimmer/tracking";
 import { service } from "@ember/service";
 import NeatlineFilter from "emb-line/services/neatline-filter";
 import NeatlineMap from "emb-line/services/neatline-map";
+import ActiveInstitutions from "emb-line/services/active-institutions";
 
 interface TimelineComponentSignature {
   Args: {
@@ -30,6 +31,8 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
 
   @service declare neatlineFilter: NeatlineFilter;
 
+  @service declare activeInstitutions: ActiveInstitutions;
+
   margins = {
     top: 10,
     left: 15,
@@ -37,7 +40,12 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
     bottom: 30,
   };
 
-  @action scrollFilter({ target }) {
+  @action handleClick(id: string) {
+    this.activeInstitutions.list = this.activeInstitutions.list.add(id);
+    this.neatlineMap.flyTo(id);
+  }
+
+  @action scrollFilter({ target }: PointerEvent) {
     const { scrollLeft } = target;
     this.neatlineFilter.beforeYear = this.scrollScale(
       scrollLeft - this.margins.left
@@ -47,7 +55,7 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
     );
   }
 
-  @action calculateTimelineSvgSize({ contentRect }) {
+  @action calculateTimelineSvgSize({ contentRect }: SVGElement) {
     this.windowWidth = contentRect.width;
     this.svgWidth = contentRect.width * 6;
     this.svgHeight = contentRect.height;
