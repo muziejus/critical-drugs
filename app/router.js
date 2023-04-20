@@ -13,4 +13,5 @@ Router.map(function () {
   this.route("elements");
   this.route("element-sets");
   this.route("tags");
+  this.route("waypoints");
 });
