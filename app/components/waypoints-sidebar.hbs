@@ -1,5 +1,7 @@
 <div class="p-4 flex flex-col justify-between" ...attributes>
-  <div class="overflow-y-auto">
+  <div id="waypoints-sidebar-div" class="overflow-y-auto"
+    {{set-scroll-to}}
+  >
     <ul class="py-4">
       {{#each this.sortedRecords as |record|}}
         {{#if (or
