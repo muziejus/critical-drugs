@@ -41,8 +41,7 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
   };
 
   @action handleClick(id: string) {
-    this.activeInstitutions.list = this.activeInstitutions.list.add(id);
-    this.activeInstitutions.scrollId = id;
+    this.activeInstitutions.toggleList(id);
     this.neatlineMap.flyTo(id);
   }
 
