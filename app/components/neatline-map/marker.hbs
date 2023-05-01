@@ -1,0 +1,23 @@
+{{#let (convert-coordinates @point.coverage) as |coordinates|}}
+  {{#if (or
+    (and
+      (lte @point.afterDate this.neatlineFilter.afterYear)
+      (not @point.beforeDate)
+    )
+    (and
+      (lte @point.afterDate this.neatlineFilter.afterYear)
+      (gte @point.beforeDate this.neatlineFilter.beforeYear)
+    )
+      )}}
+    <@layers.circle-marker @lat={{coordinates.latitude}}
+      @lng={{coordinates.longitude}}
+      @title={{@point.title}}
+      @className={{concat "timeline-marker record-id-" @point.id}}
+      @onClick={{this.handleMarkerClick}}
+      as |marker|>
+        <marker.tooltip>
+          {{if @point.title @point.title @point.itemTitle}}
+        </marker.tooltip>
+      </@layers.circle-marker>
+    {{/if}}
+{{/let}}

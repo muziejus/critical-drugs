@@ -1,16 +1,17 @@
-  <li class="w-full flex flex-col record-{{@record.id}}">  
-    <Disclosure 
+  <li class="w-full flex flex-col record-{{@record.id}}">
+  {{log this.item.elementTexts }}
+    <Disclosure
       @open={{this.handleOpen}}
       @close={{this.handleClose}}
       @isOpen={{this.isOpen}}
     as |disclosure|>
       <disclosure.Button data-test-list-item-map-button={{@record.id}}
-        class="h-full px-2 space-x-2 hover:bg-slate-200 text-left 
+        class="h-full px-2 space-x-2 hover:bg-slate-200 text-left
         text-xl font-bold
         bg-white">
         <div class="flex flex-row justify-between">
           <div class="flex-grow">
-          {{if @record.title @record.title @record.itemTitle}} 
+          {{if @record.title @record.title @record.itemTitle}}
             <span class="font-normal text-base">({{@record.afterDate}}–{{if @record.beforeDate @record.beforeDate "present"}})</span>
           </div>
           <div>
@@ -23,9 +24,9 @@
         </div>
       </disclosure.Button>
       <disclosure.Panel
-        class="border-t-primary border-t-2 
+        class="border-t-primary border-t-2
         py-2 px-4
-        w-full bg-gray-100" 
+        w-full bg-gray-100"
           {{css-transition
             enterClass="opacity-0, max-h-0"
             enterActiveClass="transition-all duration-500 ease-in-out"
@@ -39,7 +40,7 @@
           <h2>{{this.item.elementTexts.DCtitle}}</h2>
 
           <div class="flex flex-row justify-end">
-            <button 
+            <button
               class="bg-[#a11d21] text-white hover:text-slate-100 hover:shadow-lg rounded px-4" type="button" {{on "click" (if this.isZoomed this.recenter this.flyTo)}}>
               {{if this.isZoomed "Recenter Map" "Zoom to Institution"}}
             </button>

@@ -1,0 +1,13 @@
+<LeafletMap
+  @lat={{this.neatlineMap.lat}}
+  @lng={{this.neatlineMap.lng}}
+  @zoom={{this.neatlineMap.zoom}}
+  @onLoad={{this.onLoad}}
+  ...attributes
+   as |layers|>
+  <layers.tile @url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"/>
+  {{#each @records as |point|}}
+    <NeatlineMap::Marker @point=point @layers=layers />
+  {{/each}}
+
+</LeafletMap>

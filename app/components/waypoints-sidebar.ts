@@ -17,3 +17,9 @@ export default class WaypointsSidebarComponent extends Component<WaypointsSideba
     return this.args.records.sort((a, b) => b.afterDate - a.afterDate);
   }
 }
+
+declare module "@glint/environment-ember-loose/registry" {
+  export default interface Registry {
+    WaypointsSidebar: typeof WaypointsSidebarComponent;
+  }
+}

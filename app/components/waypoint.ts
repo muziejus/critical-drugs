@@ -55,3 +55,9 @@ export default class WaypointComponent extends Component<WaypointComponentSignat
     this.activeInstitutions.list = this.activeInstitutions.list;
   }
 }
+
+declare module "@glint/environment-ember-loose/registry" {
+  export default interface Registry {
+    Waypoint: typeof WaypointComponent;
+  }
+}
