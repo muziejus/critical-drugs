@@ -4,10 +4,13 @@ module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: "latest",
     sourceType: "module",
-    ecmaFeatures: {
-      legacyDecorators: true,
+    requireConfigFile: false,
+    babelOptions: {
+      plugins: [
+        ["@babel/plugin-proposal-decorators", { decoratorsBeforeExport: true }],
+      ],
     },
   },
   plugins: ["ember", "@typescript-eslint"],
@@ -36,6 +39,7 @@ module.exports = {
       files: [
         "./.eslintrc.js",
         "./.prettierrc.js",
+        "./.stylelintrc.js",
         "./.template-lintrc.js",
         "./ember-cli-build.js",
         "./testem.js",
@@ -43,6 +47,8 @@ module.exports = {
         "./config/**/*.js",
         "./lib/*/index.js",
         "./server/**/*.js",
+        "./tailwind.config.js",
+        "./postcss.config.js",
       ],
       parserOptions: {
         sourceType: "script",
@@ -51,14 +57,8 @@ module.exports = {
         browser: false,
         node: true,
       },
-      plugins: ["node"],
-      extends: ["plugin:node/recommended"],
+      extends: ["plugin:n/recommended"],
       rules: {
-        // this can be removed once the following is fixed
-        // https://github.com/mysticatea/eslint-plugin-node/issues/77
-        "node/no-unpublished-require": "off",
-        // These are JS files. They are ancillary to the structure of the app.
-        // They don't need fancy TS.
         "@typescript-eslint/no-var-requires": "off",
       },
     },

@@ -6,5 +6,12 @@ module.exports = {
   trailingComma: "es5",
   bracketSpacing: true,
   arrowParens: "avoid",
-  singleQuote: false,
+  overrides: [
+    {
+      files: "*.{js,ts}",
+      options: {
+        singleQuote: false,
+      },
+    },
+  ],
 };

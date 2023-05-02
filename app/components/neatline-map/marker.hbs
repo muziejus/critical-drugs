@@ -11,8 +11,8 @@
     {{log this.item.elementTexts}}
     {{log @point.item}}
     <@layers.circle-marker
-      @lat=8.9
-      @lng=-79
+      @lat="8.9"
+      @lng="-79"
       @title={{@point.title}}
       @className={{concat "timeline-marker record-id-" @point.id}}
       @onClick={{this.handleMarkerClick}}

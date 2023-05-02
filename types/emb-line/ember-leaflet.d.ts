@@ -1,4 +1,4 @@
-import { ComponentLike} from "@glint/template";
+import { ComponentLike } from "@glint/template";
 import { LeafletMouseEventHandlerFn } from "leaflet";
 
 export default interface EmberLeafletLayers {
@@ -17,10 +17,11 @@ export default interface EmberLeafletLayers {
       onClick?: LeafletMouseEventHandlerFn;
     };
     Blocks: {
-      default: [marker: {
-        tooltip: ComponentLike;
-      }]
+      default: [
+        marker: {
+          tooltip: ComponentLike;
+        }
+      ];
     };
   }>;
 }
-

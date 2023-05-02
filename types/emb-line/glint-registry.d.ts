@@ -17,7 +17,7 @@ declare module "@glint/environment-ember-loose/registry" {
     lte: typeof LteHelper;
     gte: typeof GteHelper;
     "markdown-to-html": typeof MarkdownToHtml;
-    'page-title': HelperLike<{
+    "page-title": HelperLike<{
       Args: { Positional: [title: string] };
       Return: void;
     }>;

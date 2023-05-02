@@ -5,7 +5,7 @@ import { service } from "@ember/service";
 import { action } from "@ember/object";
 import NeatlineFilter from "emb-line/services/neatline-filter";
 import ActiveInstitutions from "emb-line/services/active-institutions";
-import { LeafletEvent} from "leaflet";
+import { LeafletEvent } from "leaflet";
 import EmberLeafletLayers from "emb-line/ember-leaflet";
 import ItemModel from "emb-line/models/item";
 
@@ -13,7 +13,7 @@ interface NeatlineMapMarkerComponentSignature {
   Args: {
     point: NeatlineRecord;
     layers: EmberLeafletLayers;
-  }
+  };
 }
 
 export default class NeatlineMapMarkerComponent extends Component<NeatlineMapMarkerComponentSignature> {
@@ -38,7 +38,10 @@ export default class NeatlineMapMarkerComponent extends Component<NeatlineMapMar
     this.activeInstitutions.toggleList(id);
   }
 
-  constructor(owner: unknown, args: NeatlineMapMarkerComponentSignature['Args']){
+  constructor(
+    owner: unknown,
+    args: NeatlineMapMarkerComponentSignature["Args"]
+  ) {
     super(owner, args);
     this.item = this.args.point.item;
   }
