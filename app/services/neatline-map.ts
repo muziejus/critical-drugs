@@ -30,7 +30,6 @@ export default class NeatlineMapService extends Service {
   }
 
   @action flyTo(recordId: string) {
-    console.log("in flyto", recordId);
     const coordinates = this.recordCoordinates[`record-${recordId}`];
     this.map.flyTo([coordinates.latitude, coordinates.longitude], 12);
   }
