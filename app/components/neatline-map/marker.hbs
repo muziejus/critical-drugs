@@ -8,11 +8,9 @@
       (gte @point.beforeDate this.neatlineFilter.beforeYear)
     )
       )}}
-    {{log this.item.elementTexts}}
-    {{log @point.item}}
     <@layers.circle-marker
-      @lat="8.9"
-      @lng="-79"
+      @lat={{this.latitude}}
+      @lng={{this.longitude}}
       @title={{@point.title}}
       @className={{concat "timeline-marker record-id-" @point.id}}
       @onClick={{this.handleMarkerClick}}
@@ -20,5 +18,5 @@
         <marker.tooltip>
           {{if @point.title @point.title @point.itemTitle}}
         </marker.tooltip>
-      </@layers.circle-marker>
-    {{/if}}
+    </@layers.circle-marker>
+  {{/if}}

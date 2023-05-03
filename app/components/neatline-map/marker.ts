@@ -21,15 +21,9 @@ export default class NeatlineMapMarkerComponent extends Component<NeatlineMapMar
 
   @service declare activeInstitutions: ActiveInstitutions;
 
-  @tracked declare item: ItemModel | null;
+  @tracked latitude: string | undefined = "8.9";
 
-  // @tracked declare latitude: null | number;
-
-  // get latitude() {
-  //   const item = this.args.point.item;
-  //   console.log(item);
-  //   return 0 //item.elementTexts['latitude'];
-  // }
+  @tracked longitude: string | undefined = "-79";
 
   @action handleMarkerClick(event: LeafletEvent) {
     const { className } = event.target.options;
@@ -43,7 +37,11 @@ export default class NeatlineMapMarkerComponent extends Component<NeatlineMapMar
     args: NeatlineMapMarkerComponentSignature["Args"]
   ) {
     super(owner, args);
-    this.item = this.args.point.item;
+    const item = this.args.point.item as unknown as Promise<ItemModel>;
+    item.then((response: ItemModel) => {
+      this.latitude = response.elementTexts["latitude"];
+      this.longitude = response.elementTexts["longitude"];
+    });
   }
 }
 
