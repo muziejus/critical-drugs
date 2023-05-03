@@ -21,13 +21,6 @@ declare module "@glint/environment-ember-loose/registry" {
       Args: { Positional: [title: string] };
       Return: void;
     }>;
-    EmberLeafletMapMarker: ComponentLike<{
-      Element: HTMLDivElement;
-      Args: {
-        lat: number;
-        lng: number;
-      };
-    }>;
     LeafletMap: ComponentLike<{
       Element: HTMLDivElement;
       Args: {

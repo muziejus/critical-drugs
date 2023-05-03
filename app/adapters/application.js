@@ -1,28 +1,31 @@
 import RESTAdapter from "@ember-data/adapter/rest";
-import type Store from "@ember-data/store";
-import { Snapshot } from "@ember-data/store";
+// import type Store from "@ember-data/store";
+// import type { ModelSchema } from "@ember-data/types/q/ds-model";
+// import { Snapshot } from "@ember-data/store";
 import config from "emb-line/config/environment";
 
-declare module "ember-data/types/registries/adapter" {
-  export default interface AdapterRegistry {
-    application: ApplicationAdapter;
-  }
-}
+// declare module "ember-data/types/registries/adapter" {
+//   export default interface AdapterRegistry {
+//     application: ApplicationAdapter;
+//   }
+// }
 
 export default class ApplicationAdapter extends RESTAdapter {
   host = config.omekaApi.host;
   namespace = config.omekaApi.namespace;
 
   pathForType(modelName) {
+  // pathForType(modelName: string): string {
     const inflect = {
       "element-set": "element_sets",
       "neatline-record": "neatline_records",
       "neatline-exhibit": "neatline_exhibits"
     };
-    return inflect[modelName] ?? super.pathForType(modelName);
+      return inflect[modelName] ?? super.pathForType(modelName);
   }
 
-  addRelatedModel(relatedModel: string, [relationshipDefinition: RelationshipDefinition], item) {
+  addRelatedModel(relatedModel, [relationshipDefinition], item) {
+  // addRelatedModel(relatedModel: string, [relationshipDefinition: RelationshipDefinition], item) {
     if (relationshipDefinition.meta.kind === "belongsTo" && item[relatedModel]) {
       return {
         data: {
@@ -35,7 +38,8 @@ export default class ApplicationAdapter extends RESTAdapter {
     return {}
   }
 
-  async findRecord(store: Store, schema: ModelSchema, queryId: string, snapshot: Snapshot) {
+  async findRecord(store, schema, queryId, snapshot) {
+  // async findRecord(store: Store, schema: ModelSchema, queryId: string, snapshot: Snapshot) {
     const payload = await super.findRecord(store, schema, queryId, snapshot);
     const { id, ...attributes } = payload;
     if (attributes.element_texts) {
@@ -52,11 +56,12 @@ export default class ApplicationAdapter extends RESTAdapter {
   }
 
   async findAll(
-    store: Store,
-    schema: ModelSchema,
-    sinceToken: string,
-    snapshotRecordArray: SnapshotRecordArray
-  ): Promise<AdapterPayload> {
+    store, //: Store,
+    schema, //: ModelSchema,
+    sinceToken, //: string,
+    snapshotRecordArray, //: SnapshotRecordArray
+  ) {
+  // ): Promise<AdapterPayload> {
     const payload = await super.findAll(
       store,
       schema,
@@ -84,8 +89,10 @@ export default class ApplicationAdapter extends RESTAdapter {
     return out;
   }
 
-  private formatElementTexts(elementTexts: ElementTextResponse[]) {
-    const record: Record<string, string> = {};
+  formatElementTexts(elementTexts) {
+  // private formatElementTexts(elementTexts: ElementTextResponse[]) {
+    const record = {};
+    // const record: Record<string, string> = {};
     elementTexts.map(elementText => {
       const key = elementText.element_set.id === 1 ? `DC${elementText.element.name.toLowerCase()}` : elementText.element.name.toLowerCase();
       record[key] = elementText.text;
