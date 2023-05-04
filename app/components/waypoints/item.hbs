@@ -1,3 +1,4 @@
+{{#if this.isRegion}}
   <li class="w-full flex flex-col record-{{@record.id}}">
     <Disclosure
       @open={{this.handleOpen}}
@@ -58,3 +59,4 @@
       </disclosure.Panel>
     </Disclosure>
   </li>
+{{/if}}

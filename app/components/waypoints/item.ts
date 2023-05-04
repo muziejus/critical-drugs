@@ -6,14 +6,16 @@ import { tracked } from "@glimmer/tracking";
 import NeatlineFilter from "emb-line/services/neatline-filter";
 import NeatlineMap from "emb-line/services/neatline-map";
 import ActiveInstitutions from "emb-line/services/active-institutions";
+import ItemModel from "emb-line/models/item";
 
-interface WaypointComponentSignature {
+interface WaypointsItemComponentSignature {
   Args: {
     record: NeatlineRecord;
+    region: string;
   };
 }
 
-export default class WaypointComponent extends Component<WaypointComponentSignature> {
+export default class WaypointsItemComponent extends Component<WaypointsItemComponentSignature> {
   @service declare neatlineFilter: NeatlineFilter;
 
   @service declare neatlineMap: NeatlineMap;
@@ -21,6 +23,8 @@ export default class WaypointComponent extends Component<WaypointComponentSignat
   @service declare activeInstitutions: ActiveInstitutions;
 
   @tracked isZoomed = false;
+
+  @tracked isRegion = false;
 
   get isOpen() {
     return this.activeInstitutions.list.has(this.args.record.id);
@@ -54,10 +58,18 @@ export default class WaypointComponent extends Component<WaypointComponentSignat
     this.activeInstitutions.list.delete(this.args.record.id);
     this.activeInstitutions.list = this.activeInstitutions.list;
   }
+
+  constructor(owner: unknown, args: WaypointsItemComponentSignature['Args']) {
+    super(owner, args);
+    const item = this.item as unknown as Promise<ItemModel>;
+    item.then((response: ItemModel) => {
+      this.isRegion = this.args.region === response.elementTexts["region"];
+    });
+  }
 }
 
 declare module "@glint/environment-ember-loose/registry" {
   export default interface Registry {
-    Waypoint: typeof WaypointComponent;
+    "Waypoints::Item": typeof WaypointsItemComponent;
   }
 }

@@ -3,14 +3,27 @@ import { service } from "@ember/service";
 import NeatlineRecord from "emb-line/models/neatline-record";
 import NeatlineFilter from "emb-line/services/neatline-filter";
 
-interface WaypointsSidebarComponentSignature {
+interface WaypointsComponentSignature {
+  Element: HTMLDivElement;
   Args: {
     records: NeatlineRecord[];
   };
+  Blocks: {
+    default: [];
+  };
 }
 
-export default class WaypointsSidebarComponent extends Component<WaypointsSidebarComponentSignature> {
+export default class WaypointsComponent extends Component<WaypointsComponentSignature> {
   @service declare neatlineFilter: NeatlineFilter;
+
+  regions = [
+    "Northeast",
+    "Southeast",
+    "Midwest",
+    "West",
+    "Caribbean",
+    "Canada",
+  ];
 
   get sortedRecords() {
     // newest on top.
@@ -20,6 +33,6 @@ export default class WaypointsSidebarComponent extends Component<WaypointsSideba
 
 declare module "@glint/environment-ember-loose/registry" {
   export default interface Registry {
-    WaypointsSidebar: typeof WaypointsSidebarComponent;
+    Waypoints: typeof WaypointsComponent;
   }
 }

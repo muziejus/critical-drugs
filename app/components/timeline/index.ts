@@ -9,6 +9,7 @@ import NeatlineMap from "emb-line/services/neatline-map";
 import ActiveInstitutions from "emb-line/services/active-institutions";
 
 interface TimelineComponentSignature {
+  Element: HTMLDivElement;
   Args: {
     records: NeatlineRecord[];
     defaultYear?: number;
@@ -120,5 +121,11 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
     }
 
     return 16;
+  }
+}
+
+declare module "@glint/environment-ember-loose/registry" {
+  export default interface Registry {
+    Timeline: typeof TimelineComponent;
   }
 }

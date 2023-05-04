@@ -8,8 +8,12 @@ import NeatlineMap from "emb-line/services/neatline-map";
 import { LeafletEvent, Map } from "leaflet";
 
 interface NeatlineMapComponentSignature {
+  Element: HTMLDivElement;
   Args: {
     records: NeatlineRecord[];
+  };
+  Blocks: {
+    default: [];
   };
 }
 
