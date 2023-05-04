@@ -3,7 +3,7 @@ import { tracked } from "@glimmer/tracking";
 import { action } from "@ember/object";
 
 export default class ActiveInstitutions extends Service {
-  @tracked list: Set<string> = new Set(["37"]);
+  @tracked list: Set<string> = new Set([]);
 
   @tracked scrollId: string | null = null;
 
