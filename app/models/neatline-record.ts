@@ -50,4 +50,12 @@ export default class NeatlineRecord extends Model {
   declare exhibit: NeatlineExhibit;
   @belongsTo("user", { async: true }) declare owner: User;
   @belongsTo("item", { async: true }) declare item: Item;
+
+  get itemStartDate() {
+    return this.item.get("startDate");
+  }
+
+  get itemEndDate() {
+    return this.item.get("endDate");
+  }
 }

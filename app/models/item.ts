@@ -28,6 +28,41 @@ export default class ItemModel extends Model {
   @belongsTo("collection", { async: true }) declare collection: Collection;
   @belongsTo("user", { async: true }) declare owner: User;
   @belongsTo("itemType", { async: true }) declare itemType: ItemType;
+
+  private get dates() {
+    if (this.elementTexts["DCdate"] && /-/.test(this.elementTexts["DCdate"])) {
+      let [startDate, endDate] = this.elementTexts["DCdate"].split("-") as [string, string | undefined];
+      if (!endDate) {
+        endDate = "";
+      }
+
+      if (/present/.test(endDate)) {
+        // Kind of a goofy way to do this to ensure that Date.parse
+        // works below.
+        endDate = new Date().getFullYear().toString();
+      }
+
+      return {
+        startDate: Date.parse(startDate),
+        endDate: Date.parse(endDate)
+      }
+    }
+
+    return {
+      startDate: new Date(),
+      endDate: new Date()
+    };
+  }
+
+  get startDate() {
+    const { startDate } = this.dates;
+    return startDate;
+  }
+
+  get endDate() {
+    const { endDate } = this.dates;
+    return endDate;
+  }
 }
 
 declare module "ember-data/types/registries/model" {

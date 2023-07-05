@@ -1,11 +1,11 @@
   {{#if (or
     (and
-      (lte @point.afterDate this.neatlineFilter.afterYear)
-      (not @point.beforeDate)
+      (lte this.startYear this.neatlineFilter.afterYear)
+      (not this.endYear)
     )
     (and
-      (lte @point.afterDate this.neatlineFilter.afterYear)
-      (gte @point.beforeDate this.neatlineFilter.beforeYear)
+      (lte this.startYear this.neatlineFilter.afterYear)
+      (gte this.endYear this.neatlineFilter.beforeYear)
     )
       )}}
     <@layers.circle-marker

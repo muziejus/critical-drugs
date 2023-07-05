@@ -12,7 +12,8 @@
         <div class="flex flex-row justify-between">
           <div class="flex-grow">
           {{if @record.title @record.title @record.itemTitle}}
-            <span class="font-normal text-base">({{@record.afterDate}}–{{if @record.beforeDate @record.beforeDate "present"}})</span>
+            <span class="font-normal
+              text-base">({{this.startYear}}–{{this.endYear}})</span>
           </div>
           <div>
             {{#if disclosure.isOpen}}

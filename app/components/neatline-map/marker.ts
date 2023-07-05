@@ -32,6 +32,14 @@ export default class NeatlineMapMarkerComponent extends Component<NeatlineMapMar
     this.activeInstitutions.toggleList(id);
   }
 
+  get startYear() {
+    return new Date(this.args.point.itemStartDate).getFullYear();
+  }
+
+  get endYear() {
+    return new Date(this.args.point.itemEndDate).getFullYear();
+  }
+
   constructor(
     owner: unknown,
     args: NeatlineMapMarkerComponentSignature["Args"]

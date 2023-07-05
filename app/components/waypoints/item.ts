@@ -34,6 +34,14 @@ export default class WaypointsItemComponent extends Component<WaypointsItemCompo
     return this.args.record.item;
   }
 
+  get startYear() {
+    return 1976;
+  }
+
+  get endYear() {
+    return 2022;
+  }
+
   toggleZoomed() {
     this.isZoomed = !this.isZoomed;
   }
