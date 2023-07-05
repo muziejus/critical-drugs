@@ -37,7 +37,7 @@
           }}
         >
         <div class="prose">
-          <h2>{{this.item.elementTexts.DCtitle}}</h2>
+          <h2>{{get this.item.elementTexts "DCtitle"}}</h2>
 
           <div class="flex flex-row justify-end">
             <button
@@ -46,14 +46,27 @@
             </button>
           </div>
 
+          <p>(date): {{get this.item.elementTexts "DCdate"}}</p>
 
+          <p>(subject): {{get this.item.elementTexts "DCsubject"}}</p>
+          <p>(source): {{get this.item.elementTexts "DCsource"}}</p>
+          <p>(publisher): {{get this.item.elementTexts "DCpublisher"}}</p>
+          <p>(contributor): {{get this.item.elementTexts "DCcontributor"}}</p>
+          <p>(rights): {{get this.item.elementTexts "DCrights"}}</p>
+          <p>(format): {{get this.item.elementTexts "DCformat"}}</p>
+          <p>(language): {{get this.item.elementTexts "DClanguage"}}</p>
+          <p>(type): {{get this.item.elementTexts "DCtype"}}</p>
+          <p>(identifier): {{get this.item.elementTexts "DCidentifier"}}</p>
+          <p>(coverage): {{get this.item.elementTexts "DCcoverage"}}</p>
 
-          {{markdown-to-html this.item.elementTexts.DCdescription}}
+          <hr/>
 
-          <p class="text-right">{{this.item.elementTexts.DCcreator}}</p>
+          {{markdown-to-html (get this.item.elementTexts "DCdescription")}}
 
-          {{#if this.item.elementTexts.DCrelation}}
-            {{html-safe this.item.elementTexts.DCrelation}}
+          <p class="text-right">{{get this.item.elementTexts "DCcreator"}}</p>
+
+          {{#if (get this.item.elementTexts "DCrelation")}}
+            {{html-safe (get this.item.elementTexts "DCrelation")}}
           {{/if}}
         </div>
       </disclosure.Panel>
