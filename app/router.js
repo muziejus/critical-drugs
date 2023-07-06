@@ -15,4 +15,7 @@ Router.map(function () {
   this.route("tags");
   this.route("waypoints");
   this.route("institutions");
+  this.route("simple-pages", function () {
+    this.route("simple-page", { path: "/:simple_page_id" });
+  });
 });

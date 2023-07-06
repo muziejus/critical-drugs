@@ -1,0 +1,11 @@
+<div>
+      <h3>{{@model.title}}</h3>
+
+      <p>is published? {{@model.isPublished}}</p>
+      <p>created {{@model.inserted}}</p>
+
+      <div>
+        {{html-safe @model.text}}
+      </div>
+
+    </div>

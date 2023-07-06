@@ -21,6 +21,7 @@ export default class ApplicationAdapter extends RESTAdapter {
       "neatline-record": "neatline_records",
       "neatline-exhibit": "neatline_exhibits",
       "item-type": "item_types",
+      "simple-page": "simple_pages",
     };
     return inflect[modelName] ?? super.pathForType(modelName);
   }
