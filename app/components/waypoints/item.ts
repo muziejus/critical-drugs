@@ -1,5 +1,4 @@
 import Component from "@glimmer/component";
-import NeatlineRecord from "emb-line/models/neatline-record";
 import { action } from "@ember/object";
 import { service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
@@ -10,7 +9,7 @@ import ItemModel from "emb-line/models/item";
 
 interface WaypointsItemComponentSignature {
   Args: {
-    record: NeatlineRecord;
+    item: ItemModel;
     region: string;
   };
 }
@@ -27,11 +26,11 @@ export default class WaypointsItemComponent extends Component<WaypointsItemCompo
   @tracked isRegion = false;
 
   get isOpen() {
-    return this.activeInstitutions.list.has(this.args.record.id);
+    return this.activeInstitutions.list.has(this.args.item.id);
   }
 
   get item() {
-    return this.args.record.item;
+    return this.args.item;
   }
 
   get startYear() {
@@ -48,7 +47,7 @@ export default class WaypointsItemComponent extends Component<WaypointsItemCompo
 
   @action flyTo() {
     this.toggleZoomed();
-    this.neatlineMap.flyTo(this.args.record.id);
+    this.neatlineMap.flyTo(this.args.item.id);
   }
 
   @action recenter() {
@@ -58,12 +57,12 @@ export default class WaypointsItemComponent extends Component<WaypointsItemCompo
 
   @action handleOpen() {
     this.activeInstitutions.list = this.activeInstitutions.list.add(
-      this.args.record.id
+      this.args.item.id
     );
   }
 
   @action handleClose() {
-    this.activeInstitutions.list.delete(this.args.record.id);
+    this.activeInstitutions.list.delete(this.args.item.id);
     this.activeInstitutions.list = this.activeInstitutions.list;
   }
 

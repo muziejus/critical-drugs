@@ -5,18 +5,18 @@
   {{#each this.regions as |region|}}
     <h2 class="text-2xl">{{region}}</h2>
     <ul class="py-4">
-      {{#each this.sortedRecords as |record|}}
+      {{#each this.sortedItems as |item|}}
         {{#if (or
           (and
-            (lte record.afterDate this.neatlineFilter.afterYear)
-            (not record.beforeDate)
+            (lte item.afterDate this.neatlineFilter.afterYear)
+            (not item.beforeDate)
           )
           (and
-            (lte record.afterDate this.neatlineFilter.afterYear)
-            (gte record.beforeDate this.neatlineFilter.beforeYear)
+            (lte item.afterDate this.neatlineFilter.afterYear)
+            (gte item.beforeDate this.neatlineFilter.beforeYear)
           )
             )}}
-          <Waypoints::Item @region={{region}} @record={{record}} />
+          <Waypoints::Item @region={{region}} @item={{item}} />
         {{/if}}
       {{/each}}
     </ul>

@@ -1,19 +1,18 @@
 {{#if this.isRegion}}
-  <li class="w-full flex flex-col record-{{@record.id}}">
+  <li class="w-full flex flex-col item-{{@item.id}}">
     <Disclosure
       @open={{this.handleOpen}}
       @close={{this.handleClose}}
       @isOpen={{this.isOpen}}
     as |disclosure|>
-      <disclosure.Button data-test-list-item-map-button={{@record.id}}
+      <disclosure.Button data-test-list-item-map-button={{@item.id}}
         class="h-full px-2 space-x-2 hover:bg-slate-200 text-left
         text-xl font-bold
         bg-white">
         <div class="flex flex-row justify-between">
           <div class="flex-grow">
-          {{if @record.title @record.title @record.itemTitle}}
-            <span class="font-normal
-              text-base">({{this.startYear}}–{{this.endYear}})</span>
+          {{if @item.title @item.title @item.itemTitle}}
+            <span class="font-normal text-base">({{@item.afterDate}}–{{if @item.beforeDate @item.beforeDate "present"}})</span>
           </div>
           <div>
             {{#if disclosure.isOpen}}
@@ -38,7 +37,7 @@
           }}
         >
         <div class="prose">
-          <h2>{{this.item.elementTexts.DCtitle}}</h2>
+          <h2>{{get this.item.elementTexts "DCtitle"}}</h2>
 
           <div class="flex flex-row justify-end">
             <button
@@ -47,17 +46,29 @@
             </button>
           </div>
 
+          <p>(date): {{get this.item.elementTexts "DCdate"}}</p>
 
+          <p>(subject): {{get this.item.elementTexts "DCsubject"}}</p>
+          <p>(source): {{get this.item.elementTexts "DCsource"}}</p>
+          <p>(publisher): {{get this.item.elementTexts "DCpublisher"}}</p>
+          <p>(contributor): {{get this.item.elementTexts "DCcontributor"}}</p>
+          <p>(rights): {{get this.item.elementTexts "DCrights"}}</p>
+          <p>(format): {{get this.item.elementTexts "DCformat"}}</p>
+          <p>(language): {{get this.item.elementTexts "DClanguage"}}</p>
+          <p>(type): {{get this.item.elementTexts "DCtype"}}</p>
+          <p>(identifier): {{get this.item.elementTexts "DCidentifier"}}</p>
+          <p>(coverage): {{get this.item.elementTexts "DCcoverage"}}</p>
 
-          {{markdown-to-html this.item.elementTexts.DCdescription}}
+          <hr/>
 
-          <p class="text-right">{{this.item.elementTexts.DCcreator}}</p>
+          {{markdown-to-html (get this.item.elementTexts "DCdescription")}}
 
-          {{#if this.item.elementTexts.DCrelation}}
-            {{html-safe this.item.elementTexts.DCrelation}}
+          <p class="text-right">{{get this.item.elementTexts "DCcreator"}}</p>
+
+          {{#if (get this.item.elementTexts "DCrelation")}}
+            {{html-safe (get this.item.elementTexts "DCrelation")}}
           {{/if}}
         </div>
       </disclosure.Panel>
     </Disclosure>
   </li>
-{{/if}}

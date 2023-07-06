@@ -1,8 +1,8 @@
 import Service from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import NeatlineRecord from "emb-line/models/neatline-record";
 import { convertCoordinates } from "emb-line/helpers/convert-coordinates";
 import { action } from "@ember/object";
+import ItemModel from "emb-line/models/item";
 
 interface Coordinate {
   latitude: number;
@@ -23,25 +23,25 @@ export default class NeatlineMapService extends Service {
     [1, 1],
   ];
 
-  @tracked recordCoordinates: Record<string, Coordinate> = {};
+  @tracked itemCoordinates: Record<string, Coordinate> = {};
 
   @action recenter() {
     this.map.fitBounds(this.bounds);
   }
 
-  @action flyTo(recordId: string) {
-    const coordinates = this.recordCoordinates[`record-${recordId}`];
+  @action flyTo(itemId: string) {
+    const coordinates = this.itemCoordinates[`item-${itemId}`];
     this.map.flyTo([coordinates.latitude, coordinates.longitude], 12);
   }
 
-  initializeMap(map, records: NeatlineRecord[]) {
+  initializeMap(map, items: ItemModel[]) {
     const latitudes: number[] = [];
     const longitudes: number[] = [];
-    for (const record of records) {
-      const coordinates = convertCoordinates([record.coverage]);
+    for (const item of items) {
+      const coordinates = convertCoordinates([item.coverage]);
       latitudes.push(coordinates.latitude);
       longitudes.push(coordinates.longitude);
-      this.recordCoordinates[`record-${record.id}`] = coordinates;
+      this.itemCoordinates[`item-${item.id}`] = coordinates;
     }
     const sortedLatitudes = latitudes.sort((a, b) => a - b);
     const sortedLongitudes = longitudes.sort((a, b) => a - b);
