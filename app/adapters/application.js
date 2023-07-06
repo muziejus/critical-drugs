@@ -20,12 +20,16 @@ export default class ApplicationAdapter extends RESTAdapter {
       "element-set": "element_sets",
       "neatline-record": "neatline_records",
       "neatline-exhibit": "neatline_exhibits",
+      "item-type": "item_types",
     };
     return inflect[modelName] ?? super.pathForType(modelName);
   }
 
   addRelatedModel(relatedModel, [relationshipDefinition], item) {
     // addRelatedModel(relatedModel: string, [relationshipDefinition: RelationshipDefinition], item) {
+    // Because this is still working on payload, it has the names with
+    // underscores.
+    relatedModel = relatedModel.replace(/-/g, "_");
     if (
       relationshipDefinition.meta.kind === "belongsTo" &&
       item[relatedModel]
