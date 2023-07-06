@@ -12,7 +12,7 @@
       @lat={{this.latitude}}
       @lng={{this.longitude}}
       @title={{@point.title}}
-      @className={{concat "timeline-marker record-id-" @point.id}}
+      @className={{concat "timeline-marker item-id-" @point.id}}
       @onClick={{this.handleMarkerClick}}
       as |marker|>
         <marker.tooltip>

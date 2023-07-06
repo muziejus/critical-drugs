@@ -1,6 +1,6 @@
 <div class="w-full timeline" ...attributes>
 <div class="overflow-x-auto w-full h-full timeline-scroll-container"
-  {{on-resize this.calculateTimelineSvgSize}} 
+  {{on-resize this.calculateTimelineSvgSize}}
   {{on "scroll" this.scrollFilter}}
   >
   <svg class="timeline-svg panable cursor-ew-resize" width={{this.svgWidth}} height={{this.svgHeight}}>
@@ -8,44 +8,44 @@
       <g class="panable">
         <g class="timeline-entries"
           transform={{concat
-          "translate(" 
+          "translate("
           this.margins.left
           ", "
           this.margins.top
           ")"
           }}>
           {{#let (div
-            (sub this.svgHeight 
+            (sub this.svgHeight
               (add this.margins.top this.margins.bottom)
             )
             12
             ) as |elementHeight|}}
-            {{#each this.records as |record index|}}
+            {{#each this.items as |item index|}}
               <g class="timeline-entry cursor-pointer"
-                {{on "click" (fn this.handleClick record.id)}}
-                transform={{concat 
-                  "translate(" 
-                  (this.scale record.numAfterDate)
+                {{on "click" (fn this.handleClick item.id)}}
+                transform={{concat
+                  "translate("
+                  (this.scale item.numAfterDate)
                   ", "
                   (this.bandScale (mod index 8))
                   ")"
                   }}
                   >
-                  {{#if record.numBeforeDate}}
-                    <rect 
-                      class="timeline-marker {{record.itemTitle}} record-id-{{record.id}}"
-                      width={{sub (this.scale record.numBeforeDate)
-                        (this.scale record.numAfterDate)}}
+                  {{#if item.numBeforeDate}}
+                    <rect
+                      class="timeline-marker {{item.itemTitle}} item-id-{{item.id}}"
+                      width={{sub (this.scale item.numBeforeDate)
+                        (this.scale item.numAfterDate)}}
                       height={{elementHeight}}
                       x="0"
                       y={{div elementHeight -2}}
                       />
-          
+
 
                   {{else}}
-                  <circle 
+                  <circle
                     r={{div elementHeight 2}}
-                    class="timeline-marker {{record.itemTitle}}"
+                    class="timeline-marker {{item.itemTitle}}"
                     cx="0"
                     cy="0"
                     />
@@ -54,14 +54,14 @@
                       style="font-size: {{mult elementHeight 0.85 }}px;"
                       y={{sub (div elementHeight 2) (mult elementHeight 0.20)}}
                       x={{elementHeight}}>
-                        {{if record.title record.title record.itemTitle}}
+                        {{if item.title item.title item.itemTitle}}
                     </text>
               </g>
             {{/each}}
           {{/let}}
         </g>
 
-        <Timeline::Scale @scale={{this.scale}} 
+        <Timeline::Scale @scale={{this.scale}}
           @ticks={{this.ticks}}
           transform={{concat "translate(" this.margins.left "," (sub this.svgHeight 20) ")"}}
 

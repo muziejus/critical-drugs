@@ -1,6 +1,5 @@
 import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
-import NeatlineRecord from "emb-line/models/neatline-record";
 import { service } from "@ember/service";
 import { action } from "@ember/object";
 import NeatlineFilter from "emb-line/services/neatline-filter";
@@ -11,7 +10,7 @@ import ItemModel from "emb-line/models/item";
 
 interface NeatlineMapMarkerComponentSignature {
   Args: {
-    point: NeatlineRecord;
+    point: ItemModel;
     layers: EmberLeafletLayers;
   };
 }
@@ -27,7 +26,7 @@ export default class NeatlineMapMarkerComponent extends Component<NeatlineMapMar
 
   @action handleMarkerClick(event: LeafletEvent) {
     const { className } = event.target.options;
-    const id = className.split("record-id-")[1];
+    const id = className.split("item-id-")[1];
     this.neatlineFilter.shownOrganizations.push(id);
     this.activeInstitutions.toggleList(id);
   }
@@ -37,7 +36,7 @@ export default class NeatlineMapMarkerComponent extends Component<NeatlineMapMar
     args: NeatlineMapMarkerComponentSignature["Args"]
   ) {
     super(owner, args);
-    const item = this.args.point.item as unknown as Promise<ItemModel>;
+    const item = this.args.point as unknown as Promise<ItemModel>;
     item.then((response: ItemModel) => {
       this.latitude = response.elementTexts["latitude"];
       this.longitude = response.elementTexts["longitude"];

@@ -1,18 +1,18 @@
 {{#if this.isRegion}}
-  <li class="w-full flex flex-col record-{{@record.id}}">
+  <li class="w-full flex flex-col item-{{@item.id}}">
     <Disclosure
       @open={{this.handleOpen}}
       @close={{this.handleClose}}
       @isOpen={{this.isOpen}}
     as |disclosure|>
-      <disclosure.Button data-test-list-item-map-button={{@record.id}}
+      <disclosure.Button data-test-list-item-map-button={{@item.id}}
         class="h-full px-2 space-x-2 hover:bg-slate-200 text-left
         text-xl font-bold
         bg-white">
         <div class="flex flex-row justify-between">
           <div class="flex-grow">
-          {{if @record.title @record.title @record.itemTitle}}
-            <span class="font-normal text-base">({{@record.afterDate}}–{{if @record.beforeDate @record.beforeDate "present"}})</span>
+          {{if @item.title @item.title @item.itemTitle}}
+            <span class="font-normal text-base">({{@item.afterDate}}–{{if @item.beforeDate @item.beforeDate "present"}})</span>
           </div>
           <div>
             {{#if disclosure.isOpen}}
