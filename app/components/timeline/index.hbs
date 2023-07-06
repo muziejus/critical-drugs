@@ -52,7 +52,12 @@
                       style="font-size: {{mult elementHeight 0.85 }}px;"
                       y={{sub (div elementHeight 2) (mult elementHeight 0.20)}}
                       x={{elementHeight}}>
-                        {{get item.elementTexts "DCtitle"}}
+                        {{if
+                          (get item.elementTexts "short name")
+                          (get item.elementTexts "short name")
+                          (get item.elementTexts "DCtitle")
+                        }}
+                    {{log item.elementTexts}}
                     </text>
               </g>
             {{/each}}

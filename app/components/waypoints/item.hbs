@@ -11,7 +11,11 @@
         bg-white">
         <div class="flex flex-row justify-between">
           <div class="flex-grow">
-          {{get @item.elementTexts "DCtitle"}}
+              {{if
+                (get @item.elementTexts "short name")
+                (get @item.elementTexts "short name")
+                (get @item.elementTexts "DCtitle")
+              }}
             <span class="font-normal text-base">
               ({{@item.startYear}}–{{if @item.stillActive "present" @item.endYear}})
             </span>
