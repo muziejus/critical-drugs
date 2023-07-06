@@ -46,8 +46,14 @@ export default class ApplicationAdapter extends RESTAdapter {
   }
 
   async query(store, type, query, recordArray, adapterOptions) {
-    const payload = await super.query(store, type, query, recordArray, adapterOptions);
-    return this.normalizePayload(payload, type)
+    const payload = await super.query(
+      store,
+      type,
+      query,
+      recordArray,
+      adapterOptions
+    );
+    return this.normalizePayload(payload, type);
   }
 
   // Let's not futz w/ this one for now.
@@ -72,8 +78,8 @@ export default class ApplicationAdapter extends RESTAdapter {
 
   normalizePayload(payload, schema) {
     return {
-      data: payload.map(item => this.normalizeRecord(item, schema))
-    }
+      data: payload.map(item => this.normalizeRecord(item, schema)),
+    };
   }
 
   normalizeRecord(item, schema) {
@@ -85,11 +91,7 @@ export default class ApplicationAdapter extends RESTAdapter {
     }
     const relationships = {};
     for (const [relatedModel, i] of schema.relationships) {
-      relationships[relatedModel] = this.addRelatedModel(
-        relatedModel,
-        i,
-        item
-      );
+      relationships[relatedModel] = this.addRelatedModel(relatedModel, i, item);
     }
 
     return {
@@ -113,7 +115,7 @@ export default class ApplicationAdapter extends RESTAdapter {
       sinceToken,
       snapshotRecordArray
     );
-    return this.normalizePayload(payload, schema)
+    return this.normalizePayload(payload, schema);
   }
 
   formatElementTexts(elementTexts) {

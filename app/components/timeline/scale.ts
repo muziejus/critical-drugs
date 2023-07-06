@@ -15,3 +15,10 @@ export default class TimelineScaleComponent extends Component<TimelineScaleCompo
     axisBottom(this.args.scale).ticks(this.args.ticks, "")(selection);
   }
 }
+
+declare module "@glint/environment-ember-loose/registry" {
+  export default interface Registry {
+    "Timeline::Scale": typeof TimelineScaleComponent;
+    "timeline/scale": typeof TimelineScaleComponent;
+  }
+}

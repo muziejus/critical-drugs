@@ -27,7 +27,8 @@ export default class WaypointsComponent extends Component<WaypointsComponentSign
 
   get sortedItems() {
     // newest on top.
-    return this.args.items.sort((a, b) => b.afterDate - a.afterDate);
+    // return this.args.items.sort((a, b) => b.startYear - a.startYear);
+    return [...this.args.items].sort((a, b) => b.startYear - a.startYear);
   }
 }
 

@@ -20,41 +20,39 @@
             )
             12
             ) as |elementHeight|}}
-            {{#each this.items as |item index|}}
+            {{#each this.sortedItems as |item index|}}
               <g class="timeline-entry cursor-pointer"
                 {{on "click" (fn this.handleClick item.id)}}
                 transform={{concat
                   "translate("
-                  (this.scale item.numAfterDate)
+                  (this.scale item.startYear)
                   ", "
                   (this.bandScale (mod index 8))
                   ")"
                   }}
                   >
-                  {{#if item.numBeforeDate}}
+                  {{#if item.stillActive}}
+                  <circle
+                    r={{div elementHeight 2}}
+                    class="timeline-marker item-id-{{item.id}}"
+                    cx="0"
+                    cy="0"
+                    />
+                  {{else}}
                     <rect
-                      class="timeline-marker {{item.itemTitle}} item-id-{{item.id}}"
-                      width={{sub (this.scale item.numBeforeDate)
-                        (this.scale item.numAfterDate)}}
+                      class="timeline-marker item-id-{{item.id}}"
+                      width={{sub (this.scale item.endYear)
+                        (this.scale item.startYear)}}
                       height={{elementHeight}}
                       x="0"
                       y={{div elementHeight -2}}
                       />
-
-
-                  {{else}}
-                  <circle
-                    r={{div elementHeight 2}}
-                    class="timeline-marker {{item.itemTitle}}"
-                    cx="0"
-                    cy="0"
-                    />
                   {{/if}}
                     <text
                       style="font-size: {{mult elementHeight 0.85 }}px;"
                       y={{sub (div elementHeight 2) (mult elementHeight 0.20)}}
                       x={{elementHeight}}>
-                        {{if item.title item.title item.itemTitle}}
+                        {{get item.elementTexts "DCtitle"}}
                     </text>
               </g>
             {{/each}}

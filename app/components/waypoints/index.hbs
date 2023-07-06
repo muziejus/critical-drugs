@@ -8,12 +8,12 @@
       {{#each this.sortedItems as |item|}}
         {{#if (or
           (and
-            (lte item.afterDate this.neatlineFilter.afterYear)
-            (not item.beforeDate)
+            (lte item.startYear this.neatlineFilter.afterYear)
+            (not item.endYear)
           )
           (and
-            (lte item.afterDate this.neatlineFilter.afterYear)
-            (gte item.beforeDate this.neatlineFilter.beforeYear)
+            (lte item.startYear this.neatlineFilter.afterYear)
+            (gte item.endYear this.neatlineFilter.beforeYear)
           )
             )}}
           <Waypoints::Item @region={{region}} @item={{item}} />

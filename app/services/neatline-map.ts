@@ -38,10 +38,18 @@ export default class NeatlineMapService extends Service {
     const latitudes: number[] = [];
     const longitudes: number[] = [];
     for (const item of items) {
-      const coordinates = convertCoordinates([item.coverage]);
-      latitudes.push(coordinates.latitude);
-      longitudes.push(coordinates.longitude);
-      this.itemCoordinates[`item-${item.id}`] = coordinates;
+      let latitude = 1;
+      let longitude = 1;
+      if (item.elementTexts["longitude"]) {
+        longitude = parseFloat(item.elementTexts["longitude"]);
+        longitudes.push(longitude);
+      }
+      if (item.elementTexts["latitude"]) {
+        latitude = parseFloat(item.elementTexts["latitude"]);
+        latitudes.push(latitude);
+      }
+
+      this.itemCoordinates[`item-${item.id}`] = { latitude, longitude };
     }
     const sortedLatitudes = latitudes.sort((a, b) => a - b);
     const sortedLongitudes = longitudes.sort((a, b) => a - b);

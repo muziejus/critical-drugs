@@ -62,23 +62,12 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
       return this.args.defaultYear;
     }
 
-    return this.items.map(item => item.numAfterDate).sort()[0];
-    // return 1969;
+    return this.args.items.map(item => item.startYear).sort()[0];
   }
 
-  get items() {
-    return this.args.items
-      .map(item => {
-        if (item.afterDate) {
-          item.numAfterDate = +item.afterDate;
-        }
-        if (item.beforeDate) {
-          item.numBeforeDate = +item.beforeDate;
-        }
-
-        return item as TimelineRecord;
-      })
-      .sort((a, b) => a.numAfterDate - b.numAfterDate);
+  get sortedItems() {
+    // return this.args.items.toSorted((a, b) => a.startYear - b.startYear);
+    return [...this.args.items].sort((a, b) => a.startYear - b.startYear);
   }
 
   get scrollScale() {
@@ -110,8 +99,7 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
       return parseFloat(
         window
           .getComputedStyle(document.documentElement)
-          .fontSize.replace("px", ""),
-        10
+          .fontSize.replace("px", "")
       );
     }
 

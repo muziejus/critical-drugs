@@ -29,18 +29,6 @@ export default class WaypointsItemComponent extends Component<WaypointsItemCompo
     return this.activeInstitutions.list.has(this.args.item.id);
   }
 
-  get item() {
-    return this.args.item;
-  }
-
-  get startYear() {
-    return 1976;
-  }
-
-  get endYear() {
-    return 2022;
-  }
-
   toggleZoomed() {
     this.isZoomed = !this.isZoomed;
   }
@@ -66,12 +54,9 @@ export default class WaypointsItemComponent extends Component<WaypointsItemCompo
     this.activeInstitutions.list = this.activeInstitutions.list;
   }
 
-  constructor(owner: unknown, args: WaypointsItemComponentSignature['Args']) {
+  constructor(owner: unknown, args: WaypointsItemComponentSignature["Args"]) {
     super(owner, args);
-    const item = this.item as unknown as Promise<ItemModel>;
-    item.then((response: ItemModel) => {
-      this.isRegion = this.args.region === response.elementTexts["region"];
-    });
+    this.isRegion = this.args.region === this.args.item.elementTexts["region"];
   }
 }
 

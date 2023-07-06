@@ -31,24 +31,13 @@ export default class NeatlineMapMarkerComponent extends Component<NeatlineMapMar
     this.activeInstitutions.toggleList(id);
   }
 
-  get startYear() {
-    return new Date(this.args.point.itemStartDate).getFullYear();
-  }
-
-  get endYear() {
-    return new Date(this.args.point.itemEndDate).getFullYear();
-  }
-
   constructor(
     owner: unknown,
     args: NeatlineMapMarkerComponentSignature["Args"]
   ) {
     super(owner, args);
-    const item = this.args.point as unknown as Promise<ItemModel>;
-    item.then((response: ItemModel) => {
-      this.latitude = response.elementTexts["latitude"];
-      this.longitude = response.elementTexts["longitude"];
-    });
+    this.latitude = this.args.point.elementTexts["latitude"];
+    this.longitude = this.args.point.elementTexts["longitude"];
   }
 }
 
