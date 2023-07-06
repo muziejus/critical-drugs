@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.bibliography {
+  padding-left: 2rem;
+  text-indent: -2rem;
+}
+
 .timeline-marker {
   opacity: 0.3;
   fill: #a91e21;
