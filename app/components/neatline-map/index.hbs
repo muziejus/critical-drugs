@@ -6,7 +6,7 @@
   ...attributes
    as |layers|>
   <layers.tile @url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"/>
-  {{#each @records as |point|}}
+  {{#each @items as |point|}}
     <NeatlineMap::Marker @point={{point}} @layers={{layers}} />
   {{/each}}
 

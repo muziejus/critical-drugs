@@ -1,22 +1,22 @@
   {{#if (or
     (and
-      (lte this.startYear this.neatlineFilter.afterYear)
-      (not this.endYear)
+      (lte @point.startYear this.neatlineFilter.afterYear)
+      (not @point.endYear)
     )
     (and
-      (lte this.startYear this.neatlineFilter.afterYear)
-      (gte this.endYear this.neatlineFilter.beforeYear)
+      (lte @point.startYear this.neatlineFilter.afterYear)
+      (gte @point.endYear this.neatlineFilter.beforeYear)
     )
       )}}
     <@layers.circle-marker
       @lat={{this.latitude}}
       @lng={{this.longitude}}
-      @title={{@point.title}}
-      @className={{concat "timeline-marker record-id-" @point.id}}
+      @title={{get @point.elementTexts "DCtitle"}}
+      @className={{concat "timeline-marker item-id-" @point.id}}
       @onClick={{this.handleMarkerClick}}
       as |marker|>
         <marker.tooltip>
-          {{if @point.title @point.title @point.itemTitle}}
+          {{get @point.elementTexts "DCtitle"}}
         </marker.tooltip>
     </@layers.circle-marker>
   {{/if}}

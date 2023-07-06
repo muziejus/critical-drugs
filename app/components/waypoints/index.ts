@@ -1,12 +1,12 @@
 import Component from "@glimmer/component";
 import { service } from "@ember/service";
-import NeatlineRecord from "emb-line/models/neatline-record";
 import NeatlineFilter from "emb-line/services/neatline-filter";
+import ItemModel from "emb-line/models/item";
 
 interface WaypointsComponentSignature {
   Element: HTMLDivElement;
   Args: {
-    records: NeatlineRecord[];
+    items: ItemModel[];
   };
   Blocks: {
     default: [];
@@ -25,9 +25,10 @@ export default class WaypointsComponent extends Component<WaypointsComponentSign
     "Canada",
   ];
 
-  get sortedRecords() {
+  get sortedItems() {
     // newest on top.
-    return this.args.records.sort((a, b) => b.afterDate - a.afterDate);
+    // return this.args.items.sort((a, b) => b.startYear - a.startYear);
+    return [...this.args.items].sort((a, b) => b.startYear - a.startYear);
   }
 }
 

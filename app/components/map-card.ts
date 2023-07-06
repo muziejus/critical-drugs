@@ -1,15 +1,15 @@
 import Component from "@glimmer/component";
-import NeatlineRecord from "emb-line/models/neatline-record";
+import ItemModel from "emb-line/models/item";
 
 interface MapCardComponentSignature {
   Args: {
-    point: NeatlineRecord;
+    point: ItemModel;
   };
 }
 
 export default class MapCardComponent extends Component<MapCardComponentSignature> {
   get item() {
-    return this.args.point.item;
+    return this.args.point;
   }
 
   get DCdescription() {

@@ -31,26 +31,29 @@ export default class ItemModel extends Model {
 
   private get dates() {
     if (this.elementTexts["DCdate"] && /-/.test(this.elementTexts["DCdate"])) {
-      let [startDate, endDate] = this.elementTexts["DCdate"].split("-") as [string, string | undefined];
+      let [startDate, endDate] = this.elementTexts["DCdate"].split("-") as [
+        string,
+        string | undefined
+      ];
       if (!endDate) {
         endDate = "";
       }
 
-      if (/present/.test(endDate)) {
+      if (/present/i.test(endDate)) {
         // Kind of a goofy way to do this to ensure that Date.parse
         // works below.
         endDate = new Date().getFullYear().toString();
       }
 
       return {
-        startDate: Date.parse(startDate),
-        endDate: Date.parse(endDate)
-      }
+        startDate: new Date(Date.parse(startDate)),
+        endDate: new Date(Date.parse(endDate)),
+      };
     }
 
     return {
       startDate: new Date(),
-      endDate: new Date()
+      endDate: new Date(),
     };
   }
 
@@ -62,6 +65,18 @@ export default class ItemModel extends Model {
   get endDate() {
     const { endDate } = this.dates;
     return endDate;
+  }
+
+  get startYear() {
+    return this.startDate.getUTCFullYear();
+  }
+
+  get endYear() {
+    return this.endDate.getUTCFullYear();
+  }
+
+  get stillActive() {
+    return this.endYear === new Date().getUTCFullYear();
   }
 }
 

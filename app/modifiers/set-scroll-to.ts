@@ -7,7 +7,7 @@ export default class SetScrollToModifier extends Modifier {
 
   modify(element: HTMLDivElement) {
     const scrollTarget = element.querySelector(
-      `li.record-${this.activeInstitutions.scrollId}`
+      `li.item-${this.activeInstitutions.scrollId}`
     );
 
     console.log(scrollTarget);

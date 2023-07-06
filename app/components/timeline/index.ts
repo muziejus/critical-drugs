@@ -1,5 +1,4 @@
 import Component from "@glimmer/component";
-import NeatlineRecord from "emb-line/models/neatline-record";
 import { scaleLinear, scaleBand } from "d3";
 import { action } from "@ember/object";
 import { tracked } from "@glimmer/tracking";
@@ -7,18 +6,14 @@ import { service } from "@ember/service";
 import NeatlineFilter from "emb-line/services/neatline-filter";
 import NeatlineMap from "emb-line/services/neatline-map";
 import ActiveInstitutions from "emb-line/services/active-institutions";
+import ItemModel from "emb-line/models/item";
 
 interface TimelineComponentSignature {
   Element: HTMLDivElement;
   Args: {
-    records: NeatlineRecord[];
+    items: ItemModel[];
     defaultYear?: number;
   };
-}
-
-interface TimelineRecord extends NeatlineRecord {
-  numAfterDate?: number;
-  numBeforeDate?: number;
 }
 
 export default class TimelineComponent extends Component<TimelineComponentSignature> {
@@ -67,23 +62,12 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
       return this.args.defaultYear;
     }
 
-    return this.records.map(record => record.numAfterDate).sort()[0];
-    // return 1969;
+    return this.args.items.map(item => item.startYear).sort()[0];
   }
 
-  get records() {
-    return this.args.records
-      .map(record => {
-        if (record.afterDate) {
-          record.numAfterDate = +record.afterDate;
-        }
-        if (record.beforeDate) {
-          record.numBeforeDate = +record.beforeDate;
-        }
-
-        return record as TimelineRecord;
-      })
-      .sort((a, b) => a.numAfterDate - b.numAfterDate);
+  get sortedItems() {
+    // return this.args.items.toSorted((a, b) => a.startYear - b.startYear);
+    return [...this.args.items].sort((a, b) => a.startYear - b.startYear);
   }
 
   get scrollScale() {
@@ -115,8 +99,7 @@ export default class TimelineComponent extends Component<TimelineComponentSignat
       return parseFloat(
         window
           .getComputedStyle(document.documentElement)
-          .fontSize.replace("px", ""),
-        10
+          .fontSize.replace("px", "")
       );
     }
 
