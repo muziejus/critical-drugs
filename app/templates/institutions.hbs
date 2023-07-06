@@ -1,0 +1,23 @@
+{{#each @model as |item|}}
+  <div class="prose">
+          <h2 class="text-xl">{{get item.elementTexts "DCtitle"}}
+            <span class="font-normal text-base">
+              ({{item.startYear}}–{{if item.stillActive "present" item.endYear}})
+            </span></h2>
+          <p>(date): {{get item.elementTexts "DCdate"}}</p>
+
+          <p>(subject): {{get item.elementTexts "DCsubject"}}</p>
+          <p>(source): {{get item.elementTexts "DCsource"}}</p>
+          <p>(publisher): {{get item.elementTexts "DCpublisher"}}</p>
+          <p>(contributor): {{get item.elementTexts "DCcontributor"}}</p>
+          <p>(rights): {{get item.elementTexts "DCrights"}}</p>
+          <p>(format): {{get item.elementTexts "DCformat"}}</p>
+          <p>(language): {{get item.elementTexts "DClanguage"}}</p>
+          <p>(type): {{get item.elementTexts "DCtype"}}</p>
+          <p>(identifier): {{get item.elementTexts "DCidentifier"}}</p>
+          <p>(coverage): {{get item.elementTexts "DCcoverage"}}</p>
+
+          <p class="text-right">{{get item.elementTexts "DCcreator"}}</p>
+
+        </div>
+{{/each}}

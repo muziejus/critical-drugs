@@ -14,4 +14,5 @@ Router.map(function () {
   this.route("element-sets");
   this.route("tags");
   this.route("waypoints");
+  this.route("institutions");
 });
