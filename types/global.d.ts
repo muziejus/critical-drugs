@@ -1,5 +1,5 @@
 // Types for compiled templates
-declare module "emb-line/templates/*" {
+declare module "critical-drugs/templates/*" {
   import { TemplateFactory } from "ember-cli-htmlbars";
 
   const tmpl: TemplateFactory;

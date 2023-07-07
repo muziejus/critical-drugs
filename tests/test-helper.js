@@ -1,5 +1,5 @@
-import Application from "emb-line/app";
-import config from "emb-line/config/environment";
+import Application from "critical-drugs/app";
+import config from "critical-drugs/config/environment";
 import * as QUnit from "qunit";
 import { setApplication } from "@ember/test-helpers";
 import { setup } from "qunit-dom";

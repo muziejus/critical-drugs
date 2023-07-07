@@ -1,5 +1,5 @@
 import Component from "@glimmer/component";
-import ExhibitPage from "emb-line/models/exhibit-page";
+import ExhibitPage from "critical-drugs/models/exhibit-page";
 
 interface StudentPaperComponentSignature {
   Args: {

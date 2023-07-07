@@ -4,8 +4,8 @@ import Model, {
   hasMany,
   AsyncHasMany,
 } from "@ember-data/model";
-import User from "emb-line/models/user";
-import ExhibitPage from "emb-line/models/exhibit-page";
+import User from "critical-drugs/models/user";
+import ExhibitPage from "critical-drugs/models/exhibit-page";
 
 export default class Exhibit extends Model {
   @attr declare title?: string;

@@ -1,6 +1,6 @@
 import Model, { attr, hasMany, AsyncHasMany } from "@ember-data/model";
-import Collection from "emb-line/models/collection";
-import Item from "emb-line/models/item";
+import Collection from "critical-drugs/models/collection";
+import Item from "critical-drugs/models/item";
 
 declare module "ember-data/types/registries/model" {
   export default interface ModelRegistry {

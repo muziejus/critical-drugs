@@ -1,8 +1,8 @@
 import Service from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import { convertCoordinates } from "emb-line/helpers/convert-coordinates";
+import { convertCoordinates } from "critical-drugs/helpers/convert-coordinates";
 import { action } from "@ember/object";
-import ItemModel from "emb-line/models/item";
+import ItemModel from "critical-drugs/models/item";
 
 interface Coordinate {
   latitude: number;

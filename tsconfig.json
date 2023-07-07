@@ -13,9 +13,9 @@
     "typeRoots": ["types/*"],
     "baseUrl": ".",
     "paths": {
-      "emb-line/tests/*": ["tests/*"],
-      "emb-line/mirage/*": ["mirage/*"],
-      "emb-line/*": ["app/*"],
+      "critical-drugs/tests/*": ["tests/*"],
+      "critical-drugs/mirage/*": ["mirage/*"],
+      "critical-drugs/*": ["app/*"],
       "*": ["types/*"]
     },
     "skipLibCheck": true

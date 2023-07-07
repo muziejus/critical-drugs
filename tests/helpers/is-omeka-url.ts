@@ -1,4 +1,4 @@
-import config from "emb-line/config/environment";
+import config from "critical-drugs/config/environment";
 
 export default function isOmekaUrl(
   url: string,

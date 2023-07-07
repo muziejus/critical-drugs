@@ -1,15 +1,15 @@
 import { module, test } from "qunit";
 import { setupApplicationTest } from "ember-qunit";
 import { setupMirage } from "ember-cli-mirage/test-support";
-import type { MirageTestContext } from "emb-line";
-import config from "emb-line/config/environment";
-import isIsoDate from "emb-line/tests/helpers/is-iso-date";
-import isOmekaUrl from "emb-line/tests/helpers/is-omeka-url";
+import type { MirageTestContext } from "critical-drugs";
+import config from "critical-drugs/config/environment";
+import isIsoDate from "critical-drugs/tests/helpers/is-iso-date";
+import isOmekaUrl from "critical-drugs/tests/helpers/is-omeka-url";
 import {
   belongsTo,
   hasSummaryOfMany,
   hasManyElementTexts,
-} from "emb-line/tests/helpers/omeka-relationships";
+} from "critical-drugs/tests/helpers/omeka-relationships";
 
 module("Acceptance | omeka api/collections endpoint works", function (hooks) {
   setupApplicationTest(hooks);

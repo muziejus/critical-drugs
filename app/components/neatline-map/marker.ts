@@ -2,11 +2,11 @@ import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
 import { service } from "@ember/service";
 import { action } from "@ember/object";
-import NeatlineFilter from "emb-line/services/neatline-filter";
-import ActiveInstitutions from "emb-line/services/active-institutions";
+import NeatlineFilter from "critical-drugs/services/neatline-filter";
+import ActiveInstitutions from "critical-drugs/services/active-institutions";
 import { LeafletEvent } from "leaflet";
-import EmberLeafletLayers from "emb-line/ember-leaflet";
-import ItemModel from "emb-line/models/item";
+import EmberLeafletLayers from "critical-drugs/ember-leaflet";
+import ItemModel from "critical-drugs/models/item";
 
 interface NeatlineMapMarkerComponentSignature {
   Args: {

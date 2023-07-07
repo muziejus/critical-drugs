@@ -1,5 +1,5 @@
 import Component from "@glimmer/component";
-import ItemModel from "emb-line/models/item";
+import ItemModel from "critical-drugs/models/item";
 
 interface MapCardComponentSignature {
   Args: {

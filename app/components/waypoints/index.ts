@@ -1,7 +1,7 @@
 import Component from "@glimmer/component";
 import { service } from "@ember/service";
-import NeatlineFilter from "emb-line/services/neatline-filter";
-import ItemModel from "emb-line/models/item";
+import NeatlineFilter from "critical-drugs/services/neatline-filter";
+import ItemModel from "critical-drugs/models/item";
 
 interface WaypointsComponentSignature {
   Element: HTMLDivElement;

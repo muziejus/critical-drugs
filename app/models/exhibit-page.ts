@@ -1,5 +1,5 @@
 import Model, { attr, belongsTo } from "@ember-data/model";
-import Exhibit from "emb-line/models/exhibit";
+import Exhibit from "critical-drugs/models/exhibit";
 
 interface PageBlock {
   id: number;

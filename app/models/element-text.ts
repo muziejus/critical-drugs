@@ -1,7 +1,7 @@
 import Model, { attr, belongsTo } from "@ember-data/model";
-import Element from "emb-line/models/element";
-import Item from "emb-line/models/item";
-import Collection from "emb-line/models/collection";
+import Element from "critical-drugs/models/element";
+import Item from "critical-drugs/models/item";
+import Collection from "critical-drugs/models/collection";
 
 declare module "ember-data/types/registries/model" {
   export default interface ModelRegistry {

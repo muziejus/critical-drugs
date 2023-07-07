@@ -2,7 +2,7 @@ import RESTAdapter from "@ember-data/adapter/rest";
 // import type Store from "@ember-data/store";
 // import type { ModelSchema } from "@ember-data/types/q/ds-model";
 // import { Snapshot } from "@ember-data/store";
-import config from "emb-line/config/environment";
+import config from "critical-drugs/config/environment";
 
 // declare module "ember-data/types/registries/adapter" {
 //   export default interface AdapterRegistry {

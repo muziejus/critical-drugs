@@ -1,4 +1,4 @@
-import isOmekaUrl from "emb-line/tests/helpers/is-omeka-url";
+import isOmekaUrl from "critical-drugs/tests/helpers/is-omeka-url";
 import {
   ElementTextResponse,
   HasSummaryOfManyResponse,

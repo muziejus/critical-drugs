@@ -2,10 +2,10 @@ import Component from "@glimmer/component";
 import { service } from "@ember/service";
 import { action } from "@ember/object";
 import Store from "@ember-data/store";
-import NeatlineFilter from "emb-line/services/neatline-filter";
-import NeatlineMap from "emb-line/services/neatline-map";
+import NeatlineFilter from "critical-drugs/services/neatline-filter";
+import NeatlineMap from "critical-drugs/services/neatline-map";
 import { LeafletEvent, Map } from "leaflet";
-import ItemModel from "emb-line/models/item";
+import ItemModel from "critical-drugs/models/item";
 
 interface NeatlineMapComponentSignature {
   Element: HTMLDivElement;

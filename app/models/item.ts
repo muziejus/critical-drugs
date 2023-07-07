@@ -4,11 +4,11 @@ import Model, {
   hasMany,
   AsyncHasMany,
 } from "@ember-data/model";
-import Tag from "emb-line/models/tag";
-// import ElementText from "emb-line/models/element-text";
-import User from "emb-line/models/user";
-import Collection from "emb-line/models/collection";
-import ItemType from "emb-line/models/item-type";
+import Tag from "critical-drugs/models/tag";
+// import ElementText from "critical-drugs/models/element-text";
+import User from "critical-drugs/models/user";
+import Collection from "critical-drugs/models/collection";
+import ItemType from "critical-drugs/models/item-type";
 
 export default class ItemModel extends Model {
   @attr declare featured?: boolean;

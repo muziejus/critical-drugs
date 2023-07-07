@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   const ENV = {
-    modulePrefix: "emb-line",
+    modulePrefix: "critical-drugs",
     environment,
     rootURL: "/",
     locationType: "history",

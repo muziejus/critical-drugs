@@ -1,9 +1,9 @@
 {
-  "name": "emb-line",
+  "name": "critical-drugs",
   "version": "0.0.0",
   "private": true,
   "description": "An Ember front end for ambitious Omeka projects",
-  "repository": "https://github.com/muziejus/emb-line.git",
+  "repository": "https://github.com/muziejus/critical-drugs.git",
   "license": "MIT",
   "author": "Moacir P. de Sá Pereira <github@moacir.moacir.com>",
   "directories": {

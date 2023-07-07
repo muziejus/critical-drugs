@@ -1,5 +1,5 @@
 import EmberRouter from "@ember/routing/router";
-import config from "emb-line/config/environment";
+import config from "critical-drugs/config/environment";
 
 export default class Router extends EmberRouter {
   location = config.locationType;

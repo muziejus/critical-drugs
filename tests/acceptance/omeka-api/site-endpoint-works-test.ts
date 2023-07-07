@@ -1,8 +1,8 @@
 import { module, test } from "qunit";
 import { setupApplicationTest } from "ember-qunit";
 import { setupMirage } from "ember-cli-mirage/test-support";
-import type { MirageTestContext } from "emb-line";
-import config from "emb-line/config/environment";
+import type { MirageTestContext } from "critical-drugs";
+import config from "critical-drugs/config/environment";
 
 module("Acceptance | omeka api/site endpoint works", function (hooks) {
   setupApplicationTest(hooks);
@@ -14,7 +14,7 @@ module("Acceptance | omeka api/site endpoint works", function (hooks) {
     const apiResponse = await fetch(fetchUrl + "site");
     const data = await apiResponse.json();
     const site = {
-      omeka_url: "https://emb-line-omeka-site.com",
+      omeka_url: "https://critical-drugs-omeka-site.com",
       omeka_version: "2.7",
       title: "Emb-Line Omeka Backend",
       description: "Lorem ipsum dolo sit amet",

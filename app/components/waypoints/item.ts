@@ -2,10 +2,10 @@ import Component from "@glimmer/component";
 import { action } from "@ember/object";
 import { service } from "@ember/service";
 import { tracked } from "@glimmer/tracking";
-import NeatlineFilter from "emb-line/services/neatline-filter";
-import NeatlineMap from "emb-line/services/neatline-map";
-import ActiveInstitutions from "emb-line/services/active-institutions";
-import ItemModel from "emb-line/models/item";
+import NeatlineFilter from "critical-drugs/services/neatline-filter";
+import NeatlineMap from "critical-drugs/services/neatline-map";
+import ActiveInstitutions from "critical-drugs/services/active-institutions";
+import ItemModel from "critical-drugs/models/item";
 
 interface WaypointsItemComponentSignature {
   Args: {

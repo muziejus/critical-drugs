@@ -1,5 +1,5 @@
 import Model, { attr, hasMany, AsyncHasMany } from "@ember-data/model";
-import Item from "emb-line/models/item";
+import Item from "critical-drugs/models/item";
 
 export default class ItemTypeModel extends Model {
   @attr declare name?: string;

@@ -1,5 +1,5 @@
 import Model, { attr, belongsTo } from "@ember-data/model";
-import User from "emb-line/models/user";
+import User from "critical-drugs/models/user";
 
 export default class SimplePageModel extends Model {
   @attr declare isPublished: boolean;

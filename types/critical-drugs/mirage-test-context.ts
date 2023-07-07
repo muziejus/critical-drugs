@@ -1,7 +1,7 @@
 import { type TestContext } from "@ember/test-helpers";
 import { Server } from "miragejs";
-import ItemModel from "emb-line/models/item";
-import TagModel from "emb-line/models/tag";
+import ItemModel from "critical-drugs/models/item";
+import TagModel from "critical-drugs/models/tag";
 
 export default interface MirageTestContext extends TestContext {
   server: Server;

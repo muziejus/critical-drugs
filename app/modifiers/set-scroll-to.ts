@@ -1,6 +1,6 @@
 import Modifier from "ember-modifier";
 import { service } from "@ember/service";
-import ActiveInstitutions from "emb-line/services/active-institutions";
+import ActiveInstitutions from "critical-drugs/services/active-institutions";
 
 export default class SetScrollToModifier extends Modifier {
   @service declare activeInstitutions: ActiveInstitutions;

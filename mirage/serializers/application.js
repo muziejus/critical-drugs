@@ -69,7 +69,7 @@ export default class ApplicationSerializer extends RestSerializer {
 
   resourceUrl(path) {
     path = path.replace(/^\//, "");
-    return `https://emb-line-omeka-site.com/api/${path}`;
+    return `https://critical-drugs-omeka-site.com/api/${path}`;
   }
 
   buildRelationshipsAndAddUrl(record, foreignKeys, modelName) {
