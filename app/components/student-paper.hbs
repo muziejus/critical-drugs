@@ -1,0 +1,16 @@
+<div class="prose">
+  <h1>{{@paper.title}}</h1>
+  {{#each this.sortedPageBlocks as |pageBlock|}}
+    <div>
+      {{#if (eq pageBlock.layout "text")}}
+        {{html-safe pageBlock.text}}
+      {{else if (eq pageBlock.layout "file-text")}}
+        <h3>(Will have to address attachments)</h3>
+
+        {{html-safe pageBlock.text}}
+      {{else if (eq pageBlock.layout "gallery")}}
+        <h2>Gallery to come...</h2>
+      {{/if}}
+    </div>
+  {{/each}}
+</div>

@@ -6,6 +6,7 @@ import OrHelper from "@gavant/glint-template-types/types/ember-truth-helpers/or"
 import LteHelper from "@gavant/glint-template-types/types/ember-truth-helpers/lte";
 import GteHelper from "@gavant/glint-template-types/types/ember-truth-helpers/gte";
 import GtHelper from "@gavant/glint-template-types/types/ember-truth-helpers/gt";
+import EqHelper from "@gavant/glint-template-types/types/ember-truth-helpers/gt";
 import MarkdownToHtml from "@gavant/glint-template-types/types/ember-cli-showdown/markdown-to-html";
 import SvgJarHelper from "@gavant/glint-template-types/types/ember-svg-jar/svg-jar";
 import EmberLeafletLayers from "./ember-leaflet";
@@ -41,6 +42,7 @@ declare module "@glint/environment-ember-loose/registry" {
     lte: typeof LteHelper;
     gte: typeof GteHelper;
     gt: typeof GtHelper;
+    eq: typeof EqHelper;
     PopperJS: typeof PopperJS;
     // "on-resize": HelperLike<{
     //   Args: { Positional: [action: () => void, args: any] };

@@ -18,4 +18,7 @@ Router.map(function () {
   this.route("simple-pages", function () {
     this.route("simple-page", { path: "/:simple_page_id" });
   });
+  this.route("student-papers", function () {
+    this.route("student-paper", { path: "/:exhibit_page_id_slug" });
+  });
 });

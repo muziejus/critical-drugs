@@ -1,7 +1,7 @@
 <nav class="w-full flex flex-row bg-[#a11d21] text-white justify-between py-2 px-4" ...attributes>
   <a href="https://samuelkroberts.sandbox.library.columbia.edu/CMS/historical-atlas"
     class="hover:text-slate-200">
-    <div>
+    <div class="cursor-not-allowed">
       About
     </div>
   </a>
@@ -17,8 +17,8 @@
   <div class="cursor-not-allowed">
     Timeline
   </div>
-  <div class="cursor-not-allowed">
-    Student Papers
+  <div >
+    <LinkTo @route="student-papers" class="hover:text-slate-200">Student Papers</LinkTo>
   </div>
   <a href="https://samuelkroberts.sandbox.library.columbia.edu/CMS/about-us/credits"
   class="hover:text-slate-200">
