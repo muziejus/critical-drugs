@@ -1,14 +1,19 @@
 import Model, { attr, belongsTo } from "@ember-data/model";
 import Exhibit from "critical-drugs/models/exhibit";
+import { Attachment } from "omeka-api";
 
-interface PageBlock {
+interface ExhibitPageAttachment extends Attachment {
+  caption?: string;
+}
+
+export interface PageBlock {
   id: number;
   page_id: number;
   layout: string;
   options?: Record<string, string>;
   text: string;
   order: number;
-  attachments?: string[];
+  attachments?: ExhibitPageAttachment[];
 }
 
 export default class ExhibitPage extends Model {

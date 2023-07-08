@@ -7,11 +7,8 @@ export default class StudentPapers extends Route {
 
   async model() {
     const studentPapersExhibitId = 2;
-    return this.store.query(
-      "exhibit-page",
-      {
-        exhibit: studentPapersExhibitId
-      }
-    );
+    return this.store.query("exhibit-page", {
+      exhibit: studentPapersExhibitId,
+    });
   }
 }
