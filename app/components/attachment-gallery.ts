@@ -8,7 +8,7 @@ interface AttachmentGalleryComponentSignature {
   Args: {
     attachments: Attachment[];
     files: FileModel[];
-  }
+  };
 }
 
 export default class AttachmentGalleryComponent extends Component<AttachmentGalleryComponentSignature> {
@@ -25,10 +25,10 @@ export default class AttachmentGalleryComponent extends Component<AttachmentGall
 
   get files() {
     return this.args.attachments.map(attachment => {
-      if(attachment?.file?.id) {
+      if (attachment?.file?.id) {
         const file = this.getFile(attachment.file.id);
       }
-    })
+    });
   }
 }
 

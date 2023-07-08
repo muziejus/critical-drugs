@@ -11,6 +11,8 @@ interface StudentPaperComponentSignature {
 
 export default class StudentPaperComponent extends Component<StudentPaperComponentSignature> {
   get sortedPageBlocks(): PageBlock[] {
-    return [...this.args.studentPaper.pageBlocks].sort((a, b) => a.order - b.order);
+    return [...this.args.studentPaper.pageBlocks].sort(
+      (a, b) => a.order - b.order
+    );
   }
 }

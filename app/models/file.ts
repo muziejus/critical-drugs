@@ -26,7 +26,7 @@ export default class FileModel extends Model {
   // This is magicked in the adapter.
   @attr declare elementTexts: Record<string, string>;
 
-  @belongsTo("item", { async: true}) declare item: ItemModel;
+  @belongsTo("item", { async: true }) declare item: ItemModel;
 }
 
 declare module "ember-data/types/registries/model" {
