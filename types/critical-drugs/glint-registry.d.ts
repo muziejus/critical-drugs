@@ -49,6 +49,10 @@ declare module "@glint/environment-ember-loose/registry" {
     // }>;
     "svg-jar": typeof SvgJarHelper;
     "markdown-to-html": typeof MarkdownToHtml;
+    "html-safe": HelperLike<{
+      Args: {Positional: [text:string]};
+      Return: string;
+    }>;
     "page-title": HelperLike<{
       Args: { Positional: [title: string] };
       Return: void;
