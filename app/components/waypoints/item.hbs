@@ -74,6 +74,14 @@
             {{html-safe (get @item.elementTexts "DCrelation")}}
           {{/if}}
         </div>
+        <button data-test-list-item-map-button={{@item.id}}
+          class="h-full px-2 space-x-2 hover:bg-slate-200 text-left
+          text-xl font-bold
+          bg-white"
+          {{on "click" this.handleClose}}>
+          Close
+        </button>
+
       </disclosure.Panel>
     </Disclosure>
   </li>
