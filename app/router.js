@@ -21,4 +21,6 @@ Router.map(function () {
   this.route("student-papers", function () {
     this.route("student-paper", { path: "/:exhibit_page_id_slug" });
   });
+  this.route("credits");
+  this.route("about");
 });
